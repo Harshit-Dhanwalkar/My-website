@@ -140,7 +140,8 @@ section {
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease;
 }
 
 section h2 {
@@ -242,6 +243,10 @@ body.dark-mode {
     --text-color: #7fc1db;
     --button-background-color: #444;
     --button-text-color: #fff;
+}
+
+body.dark-mode section {
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
 }
 
 body {

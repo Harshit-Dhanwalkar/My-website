@@ -130,6 +130,24 @@
                 localStorage.setItem('dark-mode', 'disabled');
             }
         });
+
+        // Function to calculate shadow direction based on cursor position
+        function updateShadow(e) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const offsetX = e.clientX - rect.left - rect.width / 2;
+                const offsetY = e.clientY - rect.top - rect.height / 2;
+                const shadowX = (offsetX / 10).toFixed(1);
+                const shadowY = (offsetY / 10).toFixed(1);
+
+                // Update the shadow of each section dynamically
+                section.style.boxShadow = `${shadowX}px ${shadowY}px 15px rgba(0, 0, 0, 0.2)`;
+            });
+        }
+
+        // Add event listener to track mouse movement
+        document.addEventListener('mousemove', updateShadow);
     </script>
 </body>
 </html>
