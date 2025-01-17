@@ -6,77 +6,108 @@
     <title>My Blog</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header>
-        <div class="logo">
-            <h1>My Blog</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" id="sidebar-toggle">☰</button>
 
-    <main>
-        <section class="blog-posts">
-            <article>
-                <h2>My First Blog Post</h2>
-                <p class="date">January 17, 2025</p>
-                <p>This is the content of the first blog post. Stay tuned for more!</p>
-            </article>
-        </section>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <ul class="sidebar-nav">
+            <li class="heading">Menu</li>
+            <li class="bullet"><a href="index.html">Home</a></li>
+            <li class="bullet"><a href="about.html">About</a></li>
+            <li class="bullet"><a href="sidebar.html">Services</a></li>
+            <li class="bullet"><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
 
-        <section class="blog-posts">
-            <article>
-                <h2>Thermodynamics and Cloud Physics Notes</h2>
-                <p class="date">January 16, 2025</p>
-                <p>
-                    Click the link below to access my notes on Thermodynamics and Cloud Physics:
-                </p>
-                <p>
-                    <a href="https://github.com/Harshit-Dhanwalkar/College-Notes/blob/main/Thermodynamics-and-Cloud-Physics/Notes.pdf" target="_blank">
-                        View Thermodynamics and Cloud Physics Notes
-                    </a>
-                </p>
-            </article>
-        </section>
+    <!-- Main Content -->
+    <div class="main-content">
+        <header>
+            <div class="logo">
+                <h1>My Blog</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
 
-        <section class="blog-posts">
-            <article>
-                <h2>Numerical Weather Prediction Notes</h2>
-                <p class="date">January 16, 2025</p>
-                <p>
-                    Click the link below to access my notes on Numerical Weather Prediction:
-                </p>
-                <p>
-                    <a href="https://github.com/Harshit-Dhanwalkar/College-Notes/blob/main/Numerical-Weather-Prediction/Notes.pdf" target="_blank">
-                        View Numerical Weather Prediction Notes
-                    </a>
-                </p>
-            </article>
-        </section>
+            <section>
+                <img src="https://raw.githubusercontent.com/trinib/trinib/82213791fa9ff58d3ca768ddd6de2489ec23ffca/images/footer.svg" 
+                     alt="Banner Image" 
+                     style="width: 100%; display: block; margin: 0 auto; border-radius: 8px;">
+            </section>
+            <section class="blog-posts">
+                <article>
+                    <h2>My First Blog Post</h2>
+                    <p class="date">January 15, 2025</p>
+                    <p>This is the content of the first blog post. Stay tuned for more!</p>
+                </article>
+            </section>
 
-        <section class="blog-posts">
-            <article>
-                <h2>Boundary Layer Meteorology Notes</h2>
-                <p class="date">January 16, 2025</p>
-                <p>
-                    Click the link below to access my notes on Boundary Layer Meteorology:
-                </p>
-                <p>
-                    <a href="https://github.com/Harshit-Dhanwalkar/College-Notes/blob/main/Boundary-Layer-Meteorology/Notes.pdf" target="_blank">
-                        View Boundary Layer Meteorology Notes
-                    </a>
-                </p>
-            </article>
-        </section>
-    </main>
+            <section class="blog-posts">
+                <article>
+                    <h2>Thermodynamics and Cloud Physics Notes</h2>
+                    <p class="date">January 16, 2025</p>
+                    <p>
+                        Click the link below to access my notes on Thermodynamics and Cloud Physics:
+                    </p>
+                    <p>
+                        <a href="https://github.com/Harshit-Dhanwalkar/College-Notes/blob/main/Thermodynamics-and-Cloud-Physics/Notes.pdf" target="_blank">
+                            View Thermodynamics and Cloud Physics Notes
+                        </a>
+                    </p>
+                </article>
+            </section>
+
+            <section class="blog-posts">
+                <article>
+                    <h2>Numerical Weather Prediction Notes</h2>
+                    <p class="date">January 16, 2025</p>
+                    <p>
+                        Click the link below to access my notes on Numerical Weather Prediction:
+                    </p>
+                    <p>
+                        <a href="https://github.com/Harshit-Dhanwalkar/College-Notes/blob/main/Numerical-Weather-Prediction/Notes.pdf" target="_blank">
+                            View Numerical Weather Prediction Notes
+                        </a>
+                    </p>
+                </article>
+            </section>
+
+            <section class="blog-posts">
+                <article>
+                    <h2>Boundary Layer Meteorology Notes</h2>
+                    <p class="date">January 16, 2025</p>
+                    <p>
+                        Click the link below to access my notes on Boundary Layer Meteorology:
+                    </p>
+                    <p>
+                        <a href="https://github.com/Harshit-Dhanwalkar/College-Notes/blob/main/Boundary-Layer-Meteorology/Notes.pdf" target="_blank">
+                            View Boundary Layer Meteorology Notes
+                        </a>
+                    </p>
+                </article>
+            </section>
+    </div>
 
     <footer>
         <p>&copy; 2025 My Blog | All Rights Reserved</p>
     </footer>
+
+    <script>
+        // Toggle the sidebar visibility
+        const toggleButton = document.getElementById('sidebar-toggle');
+        const sidebar = document.getElementById('sidebar');
+
+        toggleButton.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+        });
+    </script>
 </body>
 </html>
