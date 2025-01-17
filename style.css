@@ -41,6 +41,27 @@ main {
     padding: 20px;
 }
 
+/* Style the About section */
+section {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    font-size: 2em;
+    color: #333;
+}
+
+section p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #555;
+}
+
 .blog-posts article {
     background-color: #fff;
     border-radius: 5px;
