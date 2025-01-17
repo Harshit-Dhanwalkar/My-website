@@ -80,7 +80,7 @@ form label {
 }
 
 form input, form textarea {
-    padding: 12px; /* Increased padding for a better visual appearance */
+    padding: 12px;
     font-size: 1em;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -89,7 +89,7 @@ form input, form textarea {
 }
 
 form input[type="email"], form input[type="text"], form textarea {
-    width: 100%; /* Ensure the inputs take full width */
+    width: 100%;
 }
 
 form button {
