@@ -146,7 +146,7 @@ section {
 section h2 {
     font-size: 2rem;
     color: #333;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     word-wrap: break-word;
 }
 
@@ -162,7 +162,7 @@ footer {
     text-align: center;
     background-color: #333;
     color: #fff;
-    padding: 15px;
+    padding: 1px;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -227,4 +227,56 @@ footer {
     footer {
         font-size: 0.7rem;
     }
+}
+
+/* Light and Dark Mode Styles */
+:root {
+    --background-color: #fff;
+    --text-color: #7fc1db;
+    --button-background-color: #444;
+    --button-text-color: #fff;
+}
+
+body.dark-mode {
+    --background-color: #2e2c2c;
+    --text-color: #7fc1db;
+    --button-background-color: #444;
+    --button-text-color: #fff;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+button {
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.moon, .sun {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.moon {
+    display: none;
+}
+
+.light-dark {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+body.dark-mode .moon {
+    display: block;
+}
+
+body.dark-mode .sun {
+    display: none;
 }
