@@ -66,29 +66,11 @@ section p {
     margin-bottom: 20px;
 }
 
-/* Blog Post Styles */
-.blog-posts article {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    padding: 15px;
-}
-
-.blog-posts h2 {
-    color: #333;
-}
-
-.blog-posts .date {
-    font-size: 0.9rem;
-    color: #777;
-}
-
 /* Form Styles (For Contact Page) */
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
 form label {
@@ -98,7 +80,7 @@ form label {
 }
 
 form input, form textarea {
-    padding: 10px;
+    padding: 12px; /* Increased padding for a better visual appearance */
     font-size: 1em;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -107,8 +89,7 @@ form input, form textarea {
 }
 
 form input[type="email"], form input[type="text"], form textarea {
-    width: 100%;
-    max-width: 100%;
+    width: 100%; /* Ensure the inputs take full width */
 }
 
 form button {
