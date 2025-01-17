@@ -1,3 +1,4 @@
+/* Global Styles */
 * {
     margin: 0;
     padding: 0;
@@ -11,6 +12,7 @@ body {
     color: #333;
 }
 
+/* Header Styles */
 header {
     background-color: #333;
     color: #fff;
@@ -37,11 +39,12 @@ nav ul li a {
     text-decoration: none;
 }
 
+/* Main Content Styles */
 main {
     padding: 20px;
 }
 
-/* Style the About section */
+/* Common Section Styling */
 section {
     max-width: 800px;
     margin: 20px auto;
@@ -52,16 +55,18 @@ section {
 }
 
 section h2 {
-    font-size: 2em;
+    font-size: 2.5em;
     color: #333;
+    margin-bottom: 20px;
 }
 
 section p {
     font-size: 1.2em;
-    line-height: 1.6;
     color: #555;
+    margin-bottom: 20px;
 }
 
+/* Blog Post Styles */
 .blog-posts article {
     background-color: #fff;
     border-radius: 5px;
@@ -79,6 +84,49 @@ section p {
     color: #777;
 }
 
+/* Form Styles (For Contact Page) */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form label {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+form input, form textarea {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form input[type="email"], form input[type="text"], form textarea {
+    width: 100%;
+    max-width: 100%;
+}
+
+form button {
+    padding: 12px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #555;
+}
+
+/* Footer Styles */
 footer {
     text-align: center;
     background-color: #333;
