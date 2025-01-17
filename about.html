@@ -6,30 +6,56 @@
     <title>About Me</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <div class="logo">
-            <h1>My Blog</h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
+<body> 
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" id="sidebar-toggle">☰</button>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <ul class="sidebar-nav">
+            <li class="heading">Menu</li>
+            <li class="bullet"><a href="index.html">Home</a></li>
+            <li class="bullet"><a href="about.html">About</a></li>
+            <li class="bullet"><a href="sidebar.html">Services</a></li>
+            <li class="bullet"><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <header>
+            <div class="logo">
+                <h1>My Blog</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
         <section>
             <h2>About Me</h2>
             <p>Hello! I'm Harshit, the author of this blog. I'm passionate about Earth System Science and Persuing Master in ESS. This blog is where I share my thoughts and Notes with the world.</p>
             <p>Feel free to browse around, and don't hesitate to leave a comment or reach out through the <a href="contact.html">contact page</a> if you want to connect!</p>
-                </section>
-    </main>
+        </section>
+    </div>
 
     <footer>
         <p>&copy; 2025 My Blog | All Rights Reserved</p>
     </footer>
+
+    <script>
+        // Toggle the sidebar visibility
+        const toggleButton = document.getElementById('sidebar-toggle');
+        const sidebar = document.getElementById('sidebar');
+
+        toggleButton.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+        });
+    </script>
 </body>
 </html>
