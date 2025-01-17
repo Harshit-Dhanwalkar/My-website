@@ -6,3 +6,4 @@
 
 ### TODO
 - [ ] Add socials
+- [ ] Opening pdf in browser (pdf.js)
