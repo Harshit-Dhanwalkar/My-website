@@ -5,7 +5,6 @@
 ---
 
 ### TODO
-- [ ] Opening pdf in browser (pdf.js)
 - [ ] Add socials
-- [ ] Print
+- [ ] Print option/button
 - [ ] toggle colorscehme
