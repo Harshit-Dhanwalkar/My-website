@@ -58,7 +58,7 @@ nav ul li a:hover {
     padding-top: 35px;
     padding-left: 60px;
     padding-right: 20px;
-    width: 150px;
+    width: 100px;
     height: 100vh;
     position: fixed;
     left: -250px;
@@ -162,14 +162,14 @@ section p {
 section form {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Adds space between form elements */
+    gap: 15px;
     max-width: 500px;
-    margin: 0 auto; /* Centers the form */
+    margin: 0 auto;
 }
 
 section form label {
     font-weight: bold;
-    margin-bottom: 5px; /* Adds space between label and input */
+    margin-bottom: 5px;
 }
 
 section form input,
@@ -184,7 +184,7 @@ section form button {
 section form input,
 section form textarea {
     width: 100%;
-    box-sizing: border-box; /* Ensures the padding is inside the width */
+    box-sizing: border-box;
 }
 
 section form button {

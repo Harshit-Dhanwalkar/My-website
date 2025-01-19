@@ -7,3 +7,5 @@
 ### TODO
 - [ ] Add socials
 - [ ] Opening pdf in browser (pdf.js)
+- [ ] Print
+- [ ] toggle colorscehme
