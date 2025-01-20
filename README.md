@@ -6,5 +6,4 @@
 
 ### TODO
 - [ ] Add socials
-- [ ] Print option/button
 - [ ] toggle colorscehme
