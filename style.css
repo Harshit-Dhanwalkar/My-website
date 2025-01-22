@@ -124,7 +124,7 @@ nav ul li a:hover {
 
 /* Sidebar Logo Styling */
 .sidebar-logo {
-    width: 150px; 
+    width: 50px; 
     height: auto; 
     margin: 0px auto; 
     display: block; 
@@ -388,7 +388,7 @@ body.dark-mode .sun {
 
 /* Logo styling */
 .blog-logo {
-    width: 250px;
+    width: 150px;
     height: auto;
     display: block;
     margin: 0 auto;
