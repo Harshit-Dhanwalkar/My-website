@@ -125,6 +125,7 @@ nav ul li a:hover {
 /* Sidebar Logo Styling */
 .sidebar-logo {
     width: 50px; 
+    max-width: 60%;
     height: auto; 
     margin: 0px auto; 
     display: block; 
