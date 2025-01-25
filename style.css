@@ -52,6 +52,11 @@ nav ul li a:hover {
     background-color: #555;
 }
 
+.blog-posts article {
+    max-width: 90%;
+    margin: 0 auto 50px auto;
+    margin-bottom: 60px;
+}
 /* Sidebar Styles */
 .sidebar {
     background-color: #f4f4f4;
@@ -219,6 +224,7 @@ section form button:hover {
 /* Notes Buttons styling*/
 .note-button {
     display: inline-block;
+    margin-bottom: 20px;
     padding: 10px 20px;
     font-size: 16px;
     font-family: Arial, sans-serif;
@@ -246,6 +252,18 @@ section form button:hover {
 form {
     display: inline-block;
     margin: 5px 0;
+}
+
+/* pdf styling */
+.pdf {
+    display: block;
+    width: 100%; 
+    max-width: 700px; 
+    height: 800px;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Footer Styles */
