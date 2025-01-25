@@ -216,6 +216,38 @@ section form button:hover {
     background-color: #555;
 }
 
+/* Notes Buttons styling*/
+.note-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.note-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+}
+
+.note-button:active {
+    background-color: #004494;
+    transform: scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+form {
+    display: inline-block;
+    margin: 5px 0;
+}
+
 /* Footer Styles */
 footer {
     text-align: center;
