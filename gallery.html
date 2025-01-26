@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Theme change -->
+    <div class="light-dark" align="right">
+        <button class="btn-light-dark" title="Toggle light/dark mode"> </button>
+    </div>
+
+    <!-- Sidebar Toggle Button -->
+    <button class="sidebar-toggle" id="sidebar-toggle">☰</button>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <!-- <div class="sidebar-logo"> -->
+        <!--         <img src="./assets/images/svg/logo-color.svg" alt="Sidebar Logo" class="sidebar-logo"> -->
+        <!-- </div> -->
+        <ul class="sidebar-nav">
+            <li class="heading">Menu</li>
+            <li class="bullet"><a href="index.html">Home</a></li>
+            <li class="bullet"><a href="gallery.html">Gallery</a></li>
+            <li class="bullet"><a href="about.html">About</a></li>
+            <li class="bullet"><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+   <div class="main-content">
+        <header>
+            <div class="logo">
+                <h1>Gallery</h1>
+            </div>
+        </header>
+
+        <!-- Gallery Section -->
+    <div class="slideshow_container">
+      <div class="mySlides fade">
+        <div class="numbertext">1 / 2</div>
+        <img src="./assets/images/png/contents-01.png" alt="Image 1">
+      </div>
+
+      <div class="mySlides fade">
+        <div class="numbertext">2 / 2</div>
+        <img src="./assets/images/png/page-08.png" alt="Image 2">
+      </div>
+
+      <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
+      <button class="next" onclick="plusSlides(1)">&#10095;</button>
+    </div>
+
+    <script>
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+
+      function showSlides(n) {
+        const slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) { slideIndex = 1; }
+        if (n < 1) { slideIndex = slides.length; }
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slides[slideIndex - 1].style.display = "block";
+      }
+
+        // Sidebar Toggle
+        const sidebarToggleButton = document.getElementById('sidebar-toggle');
+        const sidebar = document.getElementById('sidebar');
+
+        sidebarToggleButton.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+        });
+
+        // Light/Dark Theme Toggle
+        const themeToggleButton = document.querySelector('.btn-light-dark');
+        const body = document.body;
+
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+            body.classList.add('dark-mode');
+        }
+
+        themeToggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('dark-mode', 'enabled');
+            } else {
+                localStorage.setItem('dark-mode', 'disabled');
+            }
+        });
+
+        // Function to calculate shadow direction based on cursor position
+        function updateShadow(e) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                const offsetX = e.clientX - rect.left - rect.width / 2;
+                const offsetY = e.clientY - rect.top - rect.height / 2;
+                const shadowX = (offsetX / 10).toFixed(1);
+                const shadowY = (offsetY / 10).toFixed(1);
+
+                // Update the shadow of each section dynamically
+                section.style.boxShadow = `${shadowX}px ${shadowY}px 15px rgba(0, 0, 0, 0.2)`;
+            });
+        }
+
+        // Add event listener to track mouse movement
+        document.addEventListener('mousemove', updateShadow);
+    </script>
+
+    <footer>
+        <!-- <div class="footer-logo"> -->
+        <!--     <img src="./assets/images/svg/logo-color.svg" alt="Footer Logo" style="width: 40px; height: auto;"> -->
+        <!-- </div> -->
+        <p>&copy; 2025 My Blog | All Rights Reserved</p>
+    </footer>
+</body>
+</html>
+</body>
+</html>

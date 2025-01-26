@@ -464,3 +464,79 @@ header {
 .footer-logo img {
     margin-bottom: 10px;
 }
+
+/* Slideshow Container */
+.slideshow_container {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+  border-radius: 0.5rem;
+  height: 900px; /* Adjust height if needed */
+  margin: auto;
+  max-width: 800px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Individual Slide Styles */
+.mySlides {
+  display: none;
+}
+
+.mySlides img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+/* Navigation Buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto;
+  padding: 8px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 3px;
+  user-select: none;
+  z-index: 10;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Number Text */
+.numbertext {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+
+/* Fade Effect */
+.fade {
+  animation: fadeEffect 1.5s;
+}
+
+@keyframes fadeEffect {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
