@@ -5,5 +5,7 @@
 ---
 
 ### TODO
+- [ ] Gallery works on firefox and mobile browser, to be fixed for chromium.
 - [ ] Add socials
 - [ ] toggle colorscehme
+

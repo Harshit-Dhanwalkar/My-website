@@ -470,11 +470,14 @@ header {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
   border-radius: 0.5rem;
-  height: 900px; /* Adjust height if needed */
+  height: 1000px;
   margin: auto;
   max-width: 800px;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Individual Slide Styles */
@@ -485,7 +488,9 @@ header {
 .mySlides img {
   width: 100%;
   height: auto;
+  max-height: 100%;
   border-radius: 0.5rem;
+  object-fit: contain;
 }
 
 /* Navigation Buttons */
@@ -493,7 +498,7 @@ header {
   cursor: pointer;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(0, -50%, 0);
   width: auto;
   padding: 8px;
   color: white;
@@ -508,12 +513,12 @@ header {
   left: 10px;
 }
 
-.next {
-  right: 10px;
-}
-
 .prev:hover, .next:hover {
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.next {
+  right: 10px;
 }
 
 /* Number Text */
@@ -524,7 +529,7 @@ header {
   color: white;
   background-color: rgba(0, 0, 0, 0.6);
   padding: 5px 10px;
-  border-radius: 3px;
+  border-radius: 6px;
 }
 
 /* Fade Effect */
