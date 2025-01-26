@@ -6,6 +6,7 @@
 
 ### TODO
 - [ ] Gallery works on firefox and mobile browser, to be fixed for chromium.
-- [ ] Add socials
-- [ ] toggle colorscehme
-
+- [ ] Update Gallery.
+- [ ] Pdf veiwer works on cumputers, but not on mobile phones.
+- [ ] Add socials.
+- [ ] toggle colorscehme.
