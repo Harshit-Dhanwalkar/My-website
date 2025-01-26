@@ -50,12 +50,30 @@
     </footer>
 
     <script>
-        // Toggle the sidebar visibility
-        const toggleButton = document.getElementById('sidebar-toggle');
+        // Sidebar Toggle
+        const sidebarToggleButton = document.getElementById('sidebar-toggle');
         const sidebar = document.getElementById('sidebar');
 
-        toggleButton.addEventListener('click', () => {
+        sidebarToggleButton.addEventListener('click', () => {
             sidebar.classList.toggle('open');
+        });
+
+        // Light/Dark Theme Toggle
+        const themeToggleButton = document.querySelector('.btn-light-dark');
+        const body = document.body;
+
+        if (localStorage.getItem('dark-mode') === 'enabled') {
+            body.classList.add('dark-mode');
+        }
+
+        themeToggleButton.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('dark-mode', 'enabled');
+            } else {
+                localStorage.setItem('dark-mode', 'disabled');
+            }
         });
 
         // Function to calculate shadow direction based on cursor position
@@ -75,7 +93,6 @@
 
         // Add event listener to track mouse movement
         document.addEventListener('mousemove', updateShadow);
-    </script>
     </script>
 </body>
 </html>
