@@ -41,6 +41,7 @@
         </ul>
     </div>
 
+    <!-- Github button -->
     <div class="dropdown-buttons-trigger">
         <a id="dropdown-buttons-trigger" 
            class="btn btn-secondary topbarbtn" 
@@ -50,6 +51,20 @@
            rel="noopener noreferrer">
             <i class="fab fa-github"></i>
         </a>
+    </div>
+
+    <!-- Full-screen toogle -->
+    <div class="fullscreen-toggle-wrapper">
+        <button 
+            type="button" 
+            class="btn btn-secondary topbarbtn" 
+            data-toggle="tooltip" 
+            data-placement="bottom" 
+            onclick="toggleFullScreen()" 
+            aria-label="Fullscreen mode" 
+            title="Fullscreen mode">
+            <i class="fas fa-expand"></i>
+        </button>
     </div>
 
     <!-- Main Content -->
@@ -181,6 +196,20 @@
 
         // Add event listener to track mouse movement
         document.addEventListener('mousemove', updateShadow);
+
+        // Full-screen toogle
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
+                });
+            } else {
+                document.exitFullscreen().catch(err => {
+                    console.error(`Error attempting to exit fullscreen mode: ${err.message} (${err.name})`);
+                });
+            }
+        }
+
     </script>
 
     <footer>
