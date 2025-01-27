@@ -221,37 +221,66 @@ section form button:hover {
     background-color: #555;
 }
 
-/* Notes Buttons styling*/
-.note-button {
+/* Buttons Container styles */
+.cylindrical-button-container {
+    text-align: center;
+    margin: 20px;
+}
+
+/* Button styles */
+.cylindrical-button {
     display: inline-block;
-    margin-bottom: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-    color: #ffffff;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    position: relative;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-color: grey;
+    padding: 15px 50px;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.6);
+    perspective: 500px;
 }
 
-.note-button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+/* Hover effect for background and shadow */
+.cylindrical-button:hover {
+    background-color: #0078d7;
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-.note-button:active {
-    background-color: #004494;
-    transform: scale(0.98);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+/* Text styles */
+.cylindrical-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    opacity: 1;
+    z-index: 1;
+    transform-origin: center;
 }
 
-form {
-    display: inline-block;
-    margin: 5px 0;
+/* Hover text (initially hidden) */
+.hover-text {
+    opacity: 0;
+    transform: translate(-50%, -100%);
+    z-index: 2;
+    transform-origin: center;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Hover effect for text animation */
+.cylindrical-button:hover .cylindrical-text {
+    opacity: 0;
+    transform: translate(-50%, -150%) rotateX(-45deg); 
+}
+
+.cylindrical-button:hover .hover-text {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotateX(0deg);
 }
 
 /* pdf styling */
