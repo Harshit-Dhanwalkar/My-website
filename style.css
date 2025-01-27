@@ -664,3 +664,35 @@ button {
     opacity: 1;
   }
 }
+
+/* Socials */
+/* Position the social media icons at the bottom */
+.socials-bottom {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.socials-bottom a {
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.socials-bottom svg {
+    width: 100%;
+    height: 100%;
+    fill: #333;
+    transition: fill 0.3s;
+}
+
+.socials-bottom a:hover svg {
+    fill: #007bff;
+}
