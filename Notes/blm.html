@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thermodynamics Notes</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&amp;display=swap"
+    />
+    <link rel="stylesheet" href="../style.css?v=1.1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  </head>
+
+  <body>
+    <!-- Sticky Header -->
+    <!-- <header id="sticky-header"> -->
+    <!--   <div class="navbar__logo"> -->
+    <!--     <img src="../images/logos/my-logo_white.png" alt="Logo" class="logo" /> -->
+    <!--   </div> -->
+    <!--   <div class="navbar"> -->
+    <!--     <ul class="navbar__links"> -->
+    <!--       <li><a href="https://github.com/Harshit-Dhanwalkar">Github</a></li> -->
+    <!--     </ul> -->
+    <!--   </div> -->
+    <!-- </header> -->
+
+    <!-- Sphere Packing Animation -->
+    <section id="spherepacking">
+      <canvas id="webgl-canvas"></canvas>
+      <div class="titles">
+        <h1>Boundary Layer Meterology</h1>
+        <h2>Lecture Notes</h2>
+      </div>
+      <div class="buttons">
+        <button type="button" id="colors-btn">Random colors</button>
+      </div>
+    </section>
+
+    <section id="pdfembbed">
+      <div id="pdf-container"></div>
+
+      <script>
+        const pdfUrl = "../pdfs/BLM-Notes.pdf";
+
+        pdfjsLib
+          .getDocument(pdfUrl)
+          .promise.then((pdf) => {
+            const pdfContainer = document.getElementById("pdf-container");
+
+            for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+              pdf.getPage(pageNum).then((page) => {
+                const canvas = document.createElement("canvas");
+                const context = canvas.getContext("2d");
+                pdfContainer.appendChild(canvas);
+
+                const viewport = page.getViewport({ scale: 1.5 });
+                canvas.width = viewport.width;
+                canvas.height = viewport.height;
+
+                const renderContext = {
+                  canvasContext: context,
+                  viewport: viewport,
+                };
+                page.render(renderContext);
+              });
+            }
+          })
+          .catch((error) => {
+            console.error("Error loading PDF:", error);
+          });
+      </script>
+    </section>
+
+    <script type="module" src="../script.js"></script>
+  </body>
+</html>

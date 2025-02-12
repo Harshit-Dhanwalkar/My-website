@@ -3,267 +3,121 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harshit Prashant Dhanwalkar</title>
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&amp;display=swap"
     />
-    <!-- <div class="logo"> -->
-    <!--     <img src="./assets/images/svg/logo-color.svg" alt="My Blog Logo" class="blog-logo"> -->
-    <!-- </div> -->
-    <title>My Blog</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
   </head>
 
   <body>
-    <!-- Favicon -->
-    <link
-      rel="icon"
-      type="image/svg+xml"
-      href="./assets/images/svg/logo-color.svg"
-      sizes="any"
-    />
+    <!-- Sticky Header -->
+    <header id="sticky-header" class="header__navbar">
+      <div class="navbar__logo">
+        <img src="images/logos/my-logo_white.png" alt="Logo" class="logo" />
+      </div>
+      <div class="navbar">
+        <ul class="navbar__links">
+          <li><a href="https://github.com/Harshit-Dhanwalkar">Github</a></li>
+          <li><a href="contact/contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </header>
 
-    <!-- Theme change -->
-    <div class="theme-switch-wrapper">
-      <label class="theme-switch" for="checkbox">
-        <input type="checkbox" id="checkbox" />
-        <div class="slider round"></div>
-      </label>
-      <!-- <em>Dark/Light mode</em> -->
-    </div>
+    <!-- Sphere Packing Animation -->
+    <section id="spherepacking">
+      <canvas id="webgl-canvas"></canvas>
+      <div class="titles">
+        <h1>Harshit</h1>
+        <h2>Dhanwalkar</h2>
+      </div>
+      <div class="buttons">
+        <button type="button" id="colors-btn">Random colors</button>
+      </div>
+    </section>
 
-    <!-- Sidebar Toggle Button -->
-    <button class="sidebar-toggle" id="sidebar-toggle">☰</button>
-
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-      <!-- <div class="sidebar-logo"> -->
-      <!--         <img src="./assets/images/svg/logo-color.svg" alt="Sidebar Logo" class="sidebar-logo"> -->
-      <!-- </div> -->
-      <ul class="sidebar-nav">
-        <li class="heading">Menu</li>
-        <li class="bullet"><a href="index.html">Home</a></li>
-        <li class="bullet"><a href="gallery.html">Gallery</a></li>
-        <li class="bullet"><a href="about.html">About</a></li>
-        <li class="bullet"><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-
-    <!-- Github button -->
-    <div class="dropdown-buttons-trigger">
-      <a
-        id="dropdown-buttons-trigger"
-        class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"
-        href="https://github.com/Harshit-Dhanwalkar/College-Notes"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
-
-    <!-- Full-screen toogle -->
-    <div class="fullscreen-toggle-wrapper">
-      <button
-        type="button"
-        class="btn btn-secondary topbarbtn"
-        data-toggle="tooltip"
-        data-placement="bottom"
-        onclick="toggleFullScreen()"
-        aria-label="Fullscreen mode"
-        title="Fullscreen mode"
-      >
-        <i class="fas fa-expand"></i>
-      </button>
-    </div>
-
-    <!-- Main Content -->
-    <div class="main-content">
-      <header>
-        <div class="logo">
-          <h1>My Blog</h1>
+    <!-- Gallery Section -->
+    <section id="gallery">
+      <div class="titles">
+        <h1>Gallery</h1>
+        <div class="carousel">
+          <ul class="carousel__list">
+            <li
+              class="carousel__item"
+              data-pos="-2"
+              style="background-image: url(&quot;images/Cat-1.jpg&quot;)"
+            ></li>
+            <li
+              class="carousel__item"
+              data-pos="-1"
+              style="background-image: url(&quot;images/Cat-2.jpg&quot;)"
+            ></li>
+            <li
+              class="carousel__item"
+              data-pos="0"
+              style="background-image: url(&quot;images/Cat-sleep-1.jpg&quot;)"
+            ></li>
+            <li
+              class="carousel__item"
+              data-pos="1"
+              style="background-image: url(&quot;images/Cat-sleep.jpg&quot;)"
+            ></li>
+            <li
+              class="carousel__item"
+              data-pos="2"
+              style="background-image: url(&quot;images/Dawg1.jpg&quot;)"
+            ></li>
+          </ul>
         </div>
-      </header>
+      </div>
+    </section>
 
-      <section>
-        <img
-          src="https://raw.githubusercontent.com/trinib/trinib/82213791fa9ff58d3ca768ddd6de2489ec23ffca/images/footer.svg"
-          alt="Banner Image"
-          style="
-            width: 100%;
-            display: block;
-            margin: 0 auto;
-            border-radius: 8px;
-          "
-        />
-      </section>
-      <section class="blog-posts">
-        <article>
-          <h2>My First Blog Post</h2>
-          <p class="date">January 15, 2025</p>
-          <p>
-            Welcome to my blog where I post ESS related contents (with source
-            code) so stay tuned for more!
-          </p>
-        </article>
-      </section>
-
-      <section class="blog-posts">
-        <article>
-          <h2>Thermodynamics and Cloud Physics Notes</h2>
-          <p class="date">January 16, 2025</p>
-          <form action="./assets/pdfs/Thermo-Notes.pdf" target="_blank">
-            <button type="submit" class="note-button">
-              View Thermodynamics and Cloud Physics Notes in new tab
-            </button>
-            <!-- <button type="submit" class="cylindrical-button"> -->
-            <!--     <span class="cylindrical-text">View Notes</span> -->
-            <!--     <span class="hover-text">Open PDF</span> -->
-            <!-- </button> -->
-          </form>
-          <object
-            class="pdf"
-            data="./assets/pdfs/Thermo-Notes.pdf"
-            width="800"
-            height="500"
-          ></object>
-          <!-- <br /> -->
-          <!-- <a href="https://github.com/Harshit-Dhanwalkar/College-Notes/blob/main/Thermodynamics-and-Cloud-Physics/Notes.pdf" target="_blank"> -->
-          <!--     GitHub Backup Link -->
-          <!-- </a> -->
-        </article>
-      </section>
-
-      <section class="blog-posts">
-        <article>
-          <h2>Numerical Weather Prediction Notes</h2>
-          <p class="date">January 16, 2025</p>
-          <form action="./assets/pdfs/NWP-Notes.pdf" target="_blank">
-            <button type="submit" class="note-button">
-              View Numerical Weather Prediction Notes in new tab
-            </button>
-            <!-- <button type="submit" class="cylindrical-button"> -->
-            <!--     <span class="cylindrical-text">View Notes</span> -->
-            <!--     <span class="hover-text">Open PDF</span> -->
-            <!-- </button> -->
-          </form>
-          <object
-            class="pdf"
-            data="./assets/pdfs/NWP-Notes.pdf"
-            width="800"
-            height="500"
-          ></object>
-          <!-- <br /> -->
-          <!-- <a href="https://github.com/Harshit-Dhanwalkar/College-Notes/blob/main/Numerical-Weather-Prediction/Notes.pdf" target="_blank"> -->
-          <!--     GitHub Backup Link -->
-          <!-- </a> -->
-        </article>
-      </section>
-
-      <section class="blog-posts">
-        <article>
-          <h2>Boundary Layer Meteorology Notes</h2>
-          <p class="date">January 16, 2025</p>
-          <form action="./assets/pdfs/BLM-Notes.pdf" target="_blank">
-            <button type="submit" class="note-button">
-              View Thermodynamics and Cloud Physics Notes in new tab
-            </button>
-            <!-- <button type="submit" class="cylindrical-button"> -->
-            <!--     <span class="cylindrical-text">View Notes</span> -->
-            <!--     <span class="hover-text">Open PDF</span> -->
-            <!-- </button> -->
-          </form>
-          <object
-            class="pdf"
-            data="./assets/pdfs/BLM-Notes.pdf"
-            width="800"
-            height="500"
-          ></object>
-          <!-- <br /> -->
-          <!-- <a href="https://github.com/Harshit-Dhanwalkar/College-Notes/blob/main/Boundary-Layer-Meteorology/Notes.pdf" target="_blank"> -->
-          <!--     GitHub Backup Link -->
-          <!-- </a> -->
-        </article>
-      </section>
-    </div>
-
-    <script>
-      // Sidebar Toggle
-      const sidebarToggleButton = document.getElementById("sidebar-toggle");
-      const sidebar = document.getElementById("sidebar");
-
-      sidebarToggleButton.addEventListener("click", () => {
-        sidebar.classList.toggle("open");
-      });
-
-      // Light/Dark Theme Toggle
-      const toggleSwitch = document.querySelector(
-        '.theme-switch input[type="checkbox"]',
-      );
-
-      // Check for the saved theme preference in localStorage
-      if (localStorage.getItem("theme") === "dark") {
-        document.documentElement.setAttribute("data-theme", "dark");
-        toggleSwitch.checked = true;
-      } else {
-        document.documentElement.setAttribute("data-theme", "light");
-        toggleSwitch.checked = false;
-      }
-
-      function switchTheme(e) {
-        if (e.target.checked) {
-          document.documentElement.setAttribute("data-theme", "dark");
-          localStorage.setItem("theme", "dark");
-        } else {
-          document.documentElement.setAttribute("data-theme", "light");
-          localStorage.setItem("theme", "light");
-        }
-      }
-
-      toggleSwitch.addEventListener("change", switchTheme, false);
-
-      // Function to calculate shadow direction based on cursor position
-      function updateShadow(e) {
-        const sections = document.querySelectorAll("section");
-        sections.forEach((section) => {
-          const rect = section.getBoundingClientRect();
-          const offsetX = e.clientX - rect.left - rect.width / 2;
-          const offsetY = e.clientY - rect.top - rect.height / 2;
-          const shadowX = (offsetX / 10).toFixed(1);
-          const shadowY = (offsetY / 10).toFixed(1);
-
-          // Update the shadow of each section dynamically
-          section.style.boxShadow = `${shadowX}px ${shadowY}px 15px rgba(0, 0, 0, 0.2)`;
-        });
-      }
-
-      // Add event listener to track mouse movement
-      document.addEventListener("mousemove", updateShadow);
-
-      // Full-screen toogle
-      function toggleFullScreen() {
-        if (!document.fullscreenElement) {
-          document.documentElement.requestFullscreen().catch((err) => {
-            console.error(
-              `Error attempting to enable fullscreen mode: ${err.message} (${err.name})`,
-            );
-          });
-        } else {
-          document.exitFullscreen().catch((err) => {
-            console.error(
-              `Error attempting to exit fullscreen mode: ${err.message} (${err.name})`,
-            );
-          });
-        }
-      }
-    </script>
+    <section id="College">
+      <div class="titles">
+        <h1>College</h1>
+        <h2>Notes</h2>
+        <div class="grid-container">
+          <ul class="filter-list">
+            <li class="active" data-filter="*">All</li>
+            <li data-filter=".thermo">Thermo</li>
+            <li data-filter=".nwp">Numerical Weather Prediction</li>
+            <li data-filter=".blm">Boundary Layer Meterology</li>
+          </ul>
+          <div class="grid-container">
+            <div class="grid-item thermo">
+              <img src="images/logos/thermo-logo.png" alt="thermo" />
+              <div class="overlay">
+                <h3>Thermodynamics</h3>
+                <a href="Notes/thermo.html">Notes</a>
+              </div>
+            </div>
+            <div class="grid-item nwp">
+              <img src="images/logos/nwp-logo.png" alt="nwp" />
+              <div class="overlay">
+                <h3>Numerical Weather Prediction</h3>
+                <a href="Notes/nwp.html">Notes</a>
+              </div>
+            </div>
+            <div class="grid-item blm">
+              <img src="images/logos/blm-logo.png" alt="blm" />
+              <div class="overlay">
+                <h3>Boundary Layer Meterology</h3>
+                <a href="Notes/blm.html">Notes</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <footer>
-      <!-- <div class="footer-logo"> -->
-      <!--     <img src="./assets/images/svg/logo-color.svg" alt="Footer Logo" style="width: 40px; height: auto;"> -->
-      <!-- </div> -->
       <p>&copy; 2025 My Blog | All Rights Reserved</p>
     </footer>
+    <script type="module" src="./script.js"></script>
   </body>
 </html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harshit Prashant Dhanwalkar</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&amp;display=swap"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- Sticky Header -->
+    <header id="sticky-header" class="header__navbar">
+      <div class="navbar__logo">
+        <img src="images/logos/my-logo_white.png" alt="Logo" class="logo" />
+      </div>
+      <div class="navbar">
+        <ul class="navbar__links">
+          <li><a href="https://github.com/Harshit-Dhanwalkar">Github</a></li>
+          <li><a href="contact/contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- Sphere Packing Animation -->
+    <section id="Contact">
+      <canvas id="webgl-canvas"></canvas>
+      <div class="titles">
+        <h1>Contact Me</h1>
+      </div>
+      <div class="buttons">
+        <button type="button" id="colors-btn">Random colors</button>
+      </div>
+      <form action="https://formspree.io/f/xannzdrn" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <footer>&copy; 2025 My Blog | All Rights Reserved</footer>
+    <script type="module" src="../script.js"></script>
+  </body>
+</html>
