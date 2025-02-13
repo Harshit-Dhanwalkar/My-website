@@ -390,26 +390,47 @@ button:hover {
 }
 
 /* pdf.js */
-#pdf-container {
-  width: 80%;
-  max-width: 800px;
-  height: 600px;
-  overflow-y: auto;
-  border: 1px solid #ccc;
-  margin: 20px auto;
-  padding: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  background: #fff;
-  border-radius: 8px;
+/* #pdf-container { */
+/*   width: 80%; */
+/*   max-width: 800px; */
+/*   height: 600px; */
+/*   overflow-y: auto; */
+/*   border: 1px solid #ccc; */
+/*   margin: 20px auto; */
+/*   padding: 10px; */
+/*   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); */
+/*   background: #fff; */
+/*   border-radius: 8px; */
+/*   position: relative; */
+/*   z-index: 3; */
+/* } */
+/**/
+/* canvas { */
+/*   width: 100%; */
+/*   height: auto; */
+/*   margin-bottom: 10px; */
+/*   z-index: 3; */
+/* } */
+
+#pdfViewer {
   position: relative;
-  z-index: 3;
+  top: 5vh;
+  left: 5vw;
+  width: 90vw;
+  height: 90vh;
+  z-index: 9999;
+  background: white;
+  border: none;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
 }
 
-canvas {
-  width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-  z-index: 3;
+@media screen and (max-width: 768px) {
+  #pdfViewer {
+    width: 95vw;
+    height: 80vh;
+    top: 10vh;
+    left: 2.5vw;
+  }
 }
 
 /* Contact Form Styling */
