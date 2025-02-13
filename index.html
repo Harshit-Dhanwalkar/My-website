@@ -18,19 +18,24 @@
   <body>
     <!-- Sticky Header -->
     <header id="sticky-header" class="header__navbar">
-      <div class="navbar__logo">
-        <img src="images/logos/my-logo_white.png" alt="Logo" class="logo" />
-      </div>
       <div class="navbar">
-        <ul class="navbar__links">
+        <ul class="navbar__links navbar__left">
+          <li><a href="#Home">Home</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#College">College</a></li>
+        </ul>
+        <div class="navbar__logo">
+          <img src="images/logos/my-logo_white.png" alt="Logo" class="logo" />
+        </div>
+        <ul class="navbar__links navbar__right">
           <li><a href="https://github.com/Harshit-Dhanwalkar">Github</a></li>
           <li><a href="contact/contact.html">Contact</a></li>
         </ul>
       </div>
     </header>
 
-    <!-- Sphere Packing Animation -->
-    <section id="spherepacking">
+    <!-- Home -->
+    <section id="Home">
       <canvas id="webgl-canvas"></canvas>
       <div class="titles">
         <h1>Harshit</h1>
