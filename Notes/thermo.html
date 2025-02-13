@@ -42,38 +42,13 @@
     </section>
 
     <section id="pdfembbed">
-      <div id="pdf-container"></div>
-
-      <script>
-        const pdfUrl = "../pdfs/Thermo-Notes.pdf";
-
-        pdfjsLib
-          .getDocument(pdfUrl)
-          .promise.then((pdf) => {
-            const pdfContainer = document.getElementById("pdf-container");
-
-            for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-              pdf.getPage(pageNum).then((page) => {
-                const canvas = document.createElement("canvas");
-                const context = canvas.getContext("2d");
-                pdfContainer.appendChild(canvas);
-
-                const viewport = page.getViewport({ scale: 1.5 });
-                canvas.width = viewport.width;
-                canvas.height = viewport.height;
-
-                const renderContext = {
-                  canvasContext: context,
-                  viewport: viewport,
-                };
-                page.render(renderContext);
-              });
-            }
-          })
-          .catch((error) => {
-            console.error("Error loading PDF:", error);
-          });
-      </script>
+      <iframe
+        id="pdfViewer"
+        src="../ViewerJS/#../pdfs/Thermo-Notes.pdf"
+        width="90%"
+        height="550px"
+        allowfullscreen
+      ></iframe>
     </section>
 
     <script type="module" src="../script.js"></script>
