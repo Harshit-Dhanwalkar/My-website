@@ -58,12 +58,17 @@ const carouselList = document.querySelector(".carousel__list");
 const carouselItems = document.querySelectorAll(".carousel__item");
 const elems = Array.from(carouselItems);
 
-carouselList.addEventListener("click", function (event) {
-  var newActive = event.target.closest(".carousel__item");
-  if (!newActive || newActive.dataset.pos === "0") return;
-  updateCarousel(newActive);
-});
+// Function to find the next active item
+const findNextActiveItem = () => {
+  const activeItem = elems.find((elem) => elem.dataset.pos === "0");
+  const activePos = parseInt(activeItem.dataset.pos);
+  const nextActive = elems.find(
+    (elem) => parseInt(elem.dataset.pos) === activePos + 1,
+  );
+  return nextActive || elems[0]; // Loop back to the first item if no next item is found
+};
 
+// Function to update the carousel
 const updateCarousel = function (newActive) {
   const newActivePos = parseInt(newActive.dataset.pos);
 
@@ -74,6 +79,7 @@ const updateCarousel = function (newActive) {
   });
 };
 
+// Function to calculate the new position
 const getNewPos = function (current, active) {
   let diff = current - active;
   if (Math.abs(diff) > 2) {
@@ -81,6 +87,19 @@ const getNewPos = function (current, active) {
   }
   return diff;
 };
+
+// Automatic rotation every 3 seconds
+setInterval(() => {
+  const nextActive = findNextActiveItem();
+  updateCarousel(nextActive);
+}, 5000);
+
+// Manual click event listener
+carouselList.addEventListener("click", function (event) {
+  const newActive = event.target.closest(".carousel__item");
+  if (!newActive || newActive.dataset.pos === "0") return;
+  updateCarousel(newActive);
+});
 
 // GRID & Sticky Navbar
 document.addEventListener("DOMContentLoaded", function () {

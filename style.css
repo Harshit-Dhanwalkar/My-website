@@ -166,11 +166,15 @@ h2 {
   color: white;
   text-transform: uppercase;
   padding: 10px 12px;
-  transition: color 0.3s;
+  transition:
+    color 0.4s ease-in-out,
+    border-bottom 0.5s ease-in-out;
+  border-bottom: 2px solid transparent;
 }
 
 .navbar__links a:hover {
   color: orangered;
+  border-bottom: 2px solid orangered;
 }
 
 /* Align Left and Right */
@@ -265,11 +269,66 @@ button:hover {
   transition: all 0.3s ease-in;
   background-size: cover;
   background-position: center;
+  overflow: hidden;
 }
 
-/* Positioning */
+.carousel__image {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* Gradient Border Animation */
+@keyframes gradient-border {
+  0% {
+    background: linear-gradient(45deg, #ff0000, #ff7300);
+  }
+  12.5% {
+    background: linear-gradient(45deg, #ff7300, #ffeb00);
+  }
+  25% {
+    background: linear-gradient(45deg, #ffeb00, #00ff00);
+  }
+  37.5% {
+    background: linear-gradient(45deg, #00ff00, #00bfff);
+  }
+  50% {
+    background: linear-gradient(45deg, #00bfff, #0073ff);
+  }
+  62.5% {
+    background: linear-gradient(45deg, #0073ff, #7300ff);
+  }
+  75% {
+    background: linear-gradient(45deg, #7300ff, #ff00ff);
+  }
+  87.5% {
+    background: linear-gradient(45deg, #ff00ff, #ff0000);
+  }
+  100% {
+    background: linear-gradient(45deg, #ff0000, #ff7300);
+  }
+}
+
 .carousel__item[data-pos="0"] {
-  z-index: 5;
+  z-index: 7;
+  position: relative;
+  overflow: visible;
+}
+
+.carousel__item[data-pos="0"]::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 12px;
+  animation: gradient-border 3s infinite linear;
+  z-index: -1;
+  pointer-events: none;
 }
 
 .carousel__item[data-pos="-1"],
