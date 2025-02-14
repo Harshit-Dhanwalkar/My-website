@@ -22,6 +22,23 @@ button1.addEventListener("click", () => {
   bg.spheres.light1.color.set(0xffffff * Math.random());
 });
 
+// PDF Upload Handling
+document.addEventListener("DOMContentLoaded", function () {
+  const pdfUpload = document.getElementById("pdf-upload");
+  const pdfViewer = document.getElementById("pdfViewer");
+
+  pdfUpload.addEventListener("change", function (event) {
+    const file = event.target.files[0];
+
+    if (file && file.type === "application/pdf") {
+      const fileURL = URL.createObjectURL(file);
+      pdfViewer.src = fileURL;
+    } else {
+      alert("Please select a valid PDF file.");
+    }
+  });
+});
+
 // Gallery slider logic
 const carouselList = document.querySelector(".carousel__list");
 const carouselItems = document.querySelectorAll(".carousel__item");
@@ -51,28 +68,25 @@ const getNewPos = function (current, active) {
   return diff;
 };
 
-// GRID
+// GRID & Sticky Navbar
 document.addEventListener("DOMContentLoaded", function () {
-  // Sticky Navbar
   const header = document.getElementById("sticky-header");
   const socialSharing = document.querySelector(".social_sharing");
 
   window.addEventListener("scroll", function () {
-    // Sticky Navbar
     if (window.scrollY > 50) {
       header.classList.add("sticky");
     } else {
       header.classList.remove("sticky");
     }
 
-    // Show Social Sharing when at bottom
     let scrollPosition = window.innerHeight + window.scrollY;
     let documentHeight = document.body.offsetHeight;
 
     if (scrollPosition >= documentHeight - 10) {
-      socialSharing.classList.add("show"); // Show when at bottom
+      socialSharing.classList.add("show");
     } else {
-      socialSharing.classList.remove("show"); // Hide otherwise
+      socialSharing.classList.remove("show");
     }
   });
 
@@ -83,7 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
   if (filterItems.length > 0 && galleryItems.length > 0) {
     filterItems.forEach((item) => {
       item.addEventListener("click", function () {
-        // Remove 'active' class from all buttons
         filterItems.forEach((btn) => btn.classList.remove("active"));
         this.classList.add("active");
 

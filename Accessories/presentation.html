@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Presentation</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <!-- Sphere Packing Animation -->
+    <section id="spherepacking">
+      <canvas id="webgl-canvas"></canvas>
+      <div class="titles">
+        <h1>Presentation</h1>
+        <h2>Upload Your Presentation</h2>
+      </div>
+      <div class="buttons">
+        <button type="button" id="colors-btn">Random colors</button>
+      </div>
+    </section>
+
+    <section id="pdfembbed">
+      <div class="buttons">
+        <label for="pdf-upload">
+          <i class="fas fa-upload"></i> Upload PDF
+        </label>
+        <input type="file" id="pdf-upload" accept="application/pdf" />
+      </div>
+      <iframe
+        id="pdfViewer"
+        src="../ViewerJS/#"
+        width="90%"
+        height="550px"
+        allowfullscreen
+      ></iframe>
+    </section>
+
+    <script type="module" src="../script.js"></script>
+  </body>
+</html>
