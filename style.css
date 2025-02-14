@@ -35,7 +35,9 @@ p {
   padding: 0;
   color: black;
   text-transform: uppercase;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 1);
+  /* text-shadow: 0 0 20px rgba(255, 255, 255, 1); */
+  text-shadow: 6px 5px 10px rgba(10, 10, 10, 1);
+  text-overflow: ellipsis;
   line-height: 100%;
   user-select: none;
 }
