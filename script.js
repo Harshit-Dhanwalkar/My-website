@@ -55,12 +55,24 @@ const getNewPos = function (current, active) {
 document.addEventListener("DOMContentLoaded", function () {
   // Sticky Navbar
   const header = document.getElementById("sticky-header");
+  const socialSharing = document.querySelector(".social_sharing");
 
   window.addEventListener("scroll", function () {
+    // Sticky Navbar
     if (window.scrollY > 50) {
       header.classList.add("sticky");
     } else {
       header.classList.remove("sticky");
+    }
+
+    // Show Social Sharing when at bottom
+    let scrollPosition = window.innerHeight + window.scrollY;
+    let documentHeight = document.body.offsetHeight;
+
+    if (scrollPosition >= documentHeight - 10) {
+      socialSharing.classList.add("show"); // Show when at bottom
+    } else {
+      socialSharing.classList.remove("show"); // Hide otherwise
     }
   });
 
