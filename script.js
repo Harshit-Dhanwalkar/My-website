@@ -9,10 +9,6 @@ const bg = Spheres2Background(document.getElementById("webgl-canvas"), {
 
 const button1 = document.getElementById("colors-btn");
 
-document.body.addEventListener("click", (ev) => {
-  if (ev.target !== button1) bg.togglePause();
-});
-
 button1.addEventListener("click", () => {
   bg.spheres.setColors([
     0xffffff * Math.random(),

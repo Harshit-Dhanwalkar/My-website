@@ -396,10 +396,10 @@ button:hover {
 }
 
 .grid {
-  display: table;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns */
-  grid-template-rows: repeat(2, auto); /* 2 rows */
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 30px;
   justify-content: center;
   max-width: 700px;
   margin: 0 auto;
@@ -407,7 +407,8 @@ button:hover {
 
 @media (max-width: 768px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 }
 
@@ -415,8 +416,14 @@ button:hover {
   position: relative;
   border-radius: 15px;
   overflow: hidden;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* Image Styling */
 .grid-item img {
   width: 100%;
   height: 100px;
@@ -425,6 +432,7 @@ button:hover {
   transition: transform 0.3s ease-in-out;
 }
 
+/* Scale effect on hover */
 .grid-item:hover img {
   transform: scale(0.75);
 }
@@ -437,7 +445,7 @@ button:hover {
   color: white;
   width: 100%;
   text-align: center;
-  padding: 10px;
+  padding: 20px;
   transform: translateY(100%);
   transition: transform 0.3s ease-in-out;
 }
