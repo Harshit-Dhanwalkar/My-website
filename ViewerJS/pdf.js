@@ -2120,8 +2120,7 @@ var PDFDocumentProxy = (function PDFDocumentProxyClosure() {
  *
  * @typedef {Object} TextContent
  * @property {array} items - array of {@link TextItem}
- * @property {Object} styles - {@link TextStyles} objects, indexed by font
- *                    name.
+ * @property {Object} styles - {@link TextStyles} objects, indexed by font name.
  */
 
 /**
