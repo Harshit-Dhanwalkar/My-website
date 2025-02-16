@@ -1,3 +1,32 @@
+@font-face {
+  font-family: "Montana Bold";
+  src:
+    url("assets/fonts/montana-bold.woff2") format("woff2"),
+    url("assets/fonts/montana-bold.woff") format("woff"),
+    url("assets/fonts/montana-bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montana Light";
+  src:
+    url("assets/fonts/montana-light.woff2") format("woff2"),
+    url("assets/fonts/montana-light.woff") format("woff"),
+    url("assets/fonts/montana-light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montana Regular";
+  src:
+    url("assets/fonts/montana-regular-webfont.woff") format("woff"),
+    url("assets/fonts/montana-regular-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -39,13 +68,15 @@ body {
 #app {
   position: relative;
   height: 100%;
-  font-family: "Montserrat", serif;
+  /* font-family: "Montserrat", serif; */
+  font-family: "Montana Bold", sans-serif;
 }
 
 /* Headings */
 h1,
 h2,
 p {
+  font-family: "Montana Bold", sans-serif;
   margin: 0;
   padding: 0;
   color: black;
@@ -96,6 +127,7 @@ h2 {
 
 /* Sticky Navbar */
 #sticky-header {
+  font-family: "Montana Bold", sans-serif;
   position: fixed;
   top: 0;
   left: 0;
@@ -222,7 +254,8 @@ h2 {
 }
 
 button {
-  font-family: "Montserrat", sans-serif;
+  /* font-family: "Montserrat", sans-serif; */
+  font-family: "Montana Bold", sans-serif;
   background: rgba(250, 250, 250, 0.3);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(16px);
@@ -258,7 +291,7 @@ button:hover {
   width: 100%;
   height: 200%;
   align-items: center;
-  font-family: Arial, sans-serif;
+  font-family: "Montana Bold", sans-serif;
   z-index: 1;
   margin-top: -50%;
 }
@@ -381,6 +414,7 @@ button:hover {
 
 /* Filter List */
 .filter-list {
+  font-family: "Montana Bold", sans-serif;
   list-style: none;
   padding: 0;
   display: flex;
@@ -434,6 +468,7 @@ button:hover {
 }
 
 .grid-item {
+  font-family: "Montana Bold", sans-serif;
   position: relative;
   border-radius: 15px;
   overflow: hidden;
@@ -558,7 +593,7 @@ button:hover {
   font-style: italic;
 }
 
-/* PDF */
+/* PDF Viewer */
 #pdfViewer {
   position: relative;
   top: 5vh;
@@ -566,21 +601,30 @@ button:hover {
   width: 90vw;
   height: 90vh;
   z-index: 9999;
-  background: white;
-  border: none;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+
+  background: rgba(255, 255, 255, 0.15);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+
+  border-radius: 5px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
 }
 
+/* Responsive Styling */
 @media screen and (max-width: 768px) {
   #pdfViewer {
     width: 95vw;
     height: 80vh;
     top: 10vh;
     left: 2.5vw;
+    backdrop-filter: blur(20px) saturate(200%);
+    -webkit-backdrop-filter: blur(20px) saturate(200%);
   }
 }
 
-/* Contact Form Styling */
+/* Glassmorphic Contact Form */
 section form {
   position: relative;
   z-index: 2;
@@ -589,40 +633,90 @@ section form {
   gap: 15px;
   max-width: 500px;
   margin: 0 auto;
+  padding: 20px;
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px) saturate(180%);
+  -webkit-backdrop-filter: blur(15px) saturate(180%);
+
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Labels */
 section form label {
+  font-family: "Montana Bold", sans-serif;
   font-weight: bold;
+  color: black;
   margin-bottom: 5px;
 }
 
-section form input,
-section form textarea,
-section form button {
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
+/* Inputs & Textarea */
 section form input,
 section form textarea {
-  width: 100%;
-  box-sizing: border-box;
+  font-family: "Montana Bold", sans-serif;
+  width: 95%;
+  padding: 12px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px) saturate(160%);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+
+  color: black;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Placeholder Styling */
+section form input::placeholder,
+section form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Focus Effect */
+section form input:focus,
+section form textarea:focus {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Button */
+section form button {
+  /* font-family: "Montserrat", sans-serif; */
+  font-family: "Montana Bold", sans-serif;
+  font-size: 12px;
+  position: relative;
+  background: rgba(250, 250, 250, 0.3);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(16px);
-}
-
-section form button {
-  background-color: #333;
-  color: #fff;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  font-weight: bold;
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   font-size: 1rem;
-  transition: background-color 0.3s;
+  padding: 12px 20px;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  z-index: 2;
+  gap: 15px;
 }
 
+/* Hover Effect */
 section form button:hover {
-  background-color: #555;
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transform: scale(1.05);
 }
 
 /* Socails */
@@ -735,7 +829,8 @@ section form button:hover {
 }
 
 .socials-share-logo {
-  font-family: "Font Awesome 6 Free";
+  /* font-family: "Font Awesome 6 Free"; */
+  font-family: "Montana Bold", sans-serif;
   font-weight: 900;
 }
 
@@ -746,7 +841,7 @@ section form button:hover {
 }
 
 .buttons label {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montana Bold", sans-serif;
   background: rgba(250, 250, 250, 0.3);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(16px);
