@@ -125,9 +125,13 @@ h2 {
   word-wrap: break-word;
 }
 
-/* Sticky Navbar */
+/* Sticky Navbar with Full Panel Glass Shine Effect */
 #sticky-header {
   font-family: "Montana Bold", sans-serif;
+  font-size: 16px;
+  text-shadow: 7px 7px 10px rgba(0, 0, 0, 0.9);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   position: fixed;
   top: 0;
   left: 0;
@@ -135,8 +139,7 @@ h2 {
   height: 60px;
   background: rgba(20, 20, 20, 0.8);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(16px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -166,6 +169,25 @@ h2 {
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Full Panel Glass Shine Effect */
+#sticky-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -105%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(45deg);
+  transition: left 0.8s ease-in-out;
+}
+
+#sticky-header.sticky:hover::before {
+  left: 150%;
 }
 
 /* Logo */
@@ -180,13 +202,6 @@ h2 {
   transform: scale(0.9);
 }
 
-/* Wraps both left & right links */
-.navbar__nav {
-  display: flex;
-  flex-grow: 1;
-  justify-content: space-between;
-}
-
 /* Navbar Links */
 .navbar__links {
   list-style: none;
@@ -198,6 +213,8 @@ h2 {
 
 .navbar__links li {
   display: inline;
+  position: relative;
+  overflow: hidden;
 }
 
 .navbar__links a {
@@ -209,26 +226,13 @@ h2 {
     color 0.4s ease-in-out,
     border-bottom 0.5s ease-in-out;
   border-bottom: 2px solid transparent;
+  position: relative;
 }
 
 .navbar__links a:hover {
   color: orangered;
+  /* text-decoration: underline; */
   border-bottom: 2px solid orangered;
-}
-
-/* Align Left and Right */
-.navbar__left {
-  margin-right: auto; /* Pushes the right links to the right */
-}
-
-.navbar__right {
-  margin-left: auto;
-}
-
-/* Make navbar visible when in sticky mode */
-.sticky .navbar__links a,
-.sticky .navbar__logo a {
-  color: white !important;
 }
 
 /* Background WebGL Canvas */
