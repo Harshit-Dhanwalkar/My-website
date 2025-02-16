@@ -91,11 +91,11 @@ setInterval(() => {
 }, 5000);
 
 // Manual click event listener
-carouselList.addEventListener("click", function (event) {
-  const newActive = event.target.closest(".carousel__item");
-  if (!newActive || newActive.dataset.pos === "0") return;
-  updateCarousel(newActive);
-});
+// carouselList.addEventListener("click", function (event) {
+//   const newActive = event.target.closest(".carousel__item");
+//   if (!newActive || newActive.dataset.pos === "0") return;
+//   updateCarousel(newActive);
+// });
 
 // GRID & Sticky Navbar
 document.addEventListener("DOMContentLoaded", function () {

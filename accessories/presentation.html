@@ -7,6 +7,33 @@
     <link rel="stylesheet" href="../style.css" />
   </head>
   <body>
+    <!-- Sticky Header/ NavBar -->
+    <header id="sticky-header" class="header__navbar">
+      <nav class="navbar">
+        <ul class="navbar__links navbar__left">
+          <li><a href="../index.html">Home</a></li>
+        </ul>
+        <div class="navbar__logo">
+          <img
+            src="../assets/logos/my-logo_white.png"
+            alt="Logo"
+            class="logo"
+          />
+        </div>
+        <ul class="navbar__links navbar__right">
+          <li><a href="#">Presentation</a></li>
+          <li><a href="https://github.com/Harshit-Dhanwalkar">Github</a></li>
+          <li><a href="../blog/index.html">Blog</a></li>
+          <li><a href="../contact/index.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Scroll Indicator -->
+      <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+      </div>
+    </header>
+
     <!-- Sphere Packing Animation -->
     <section id="spherepacking">
       <canvas id="webgl-canvas"></canvas>
