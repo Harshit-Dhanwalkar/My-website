@@ -16,10 +16,29 @@
   </head>
 
   <body>
+    <!-- TODO: add navbar.js and navbar.html -->
     <!-- Sticky Header/ NavBar -->
     <header id="sticky-header" class="header__navbar">
-      <div id="navbar-container"></div>
-      <script src="/navbar.js"></script>
+      <div class="navbar">
+        <ul class="navbar__links navbar__left">
+          <li><a href="#Home">Home</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#College">College</a></li>
+          <li><a href="#Accessories">Accessories</a></li>
+        </ul>
+        <div class="navbar__logo">
+          <img src="assets/logos/my-logo_white.png" alt="Logo" class="logo" />
+        </div>
+        <ul class="navbar__links navbar__right">
+          <li><a href="https://github.com/Harshit-Dhanwalkar">Github</a></li>
+          <li><a href="contact/contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+      </div>
     </header>
 
     <!-- Home -->
