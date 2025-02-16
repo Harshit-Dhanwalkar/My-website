@@ -22,12 +22,15 @@
   </head>
 
   <body>
+    <!-- custom-cursor -->
+    <div class="custom-cursor"></div>
+
     <!-- Sticky Header/ NavBar -->
     <header id="sticky-header" class="header__navbar">
       <div class="navbar">
         <ul class="navbar__links navbar__left">
           <li><a href="#Home">Home</a></li>
-          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#Gallery">Gallery</a></li>
           <li><a href="#College">College</a></li>
           <li><a href="#Accessories">Accessories</a></li>
         </ul>
@@ -36,7 +39,13 @@
         </div>
         <ul class="navbar__links navbar__right">
           <li><a href="https://github.com/Harshit-Dhanwalkar">Github</a></li>
-          <li><a href="blog/index.html">Blog</a></li>
+          <li>
+            <a href="Blog/index.html" 
+               style="cursor: url('assets/cursors/not-allowed.svg'), not-allowed; 
+                      opacity: 0.5;">
+              Blog
+            </a>
+          </li>
           <li><a href="contact/index.html">Contact</a></li>
         </ul>
       </div>
@@ -60,7 +69,7 @@
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery">
+    <section id="Gallery">
       <div class="titles">
         <h1>Gallery</h1>
         <div class="carousel">
