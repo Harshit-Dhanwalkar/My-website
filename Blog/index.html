@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harshit Prashant Dhanwalkar</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&amp;display=swap"
+    />
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter&display=swap" > -->
+    <link rel="stylesheet" href="../../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- Sticky Header -->
+    <header id="sticky-header" class="header__navbar">
+      <nav class="navbar">
+        <ul class="navbar__links navbar__left">
+          <li><a href="../../index.html">Home</a></li>
+        </ul>
+        <div class="navbar__logo">
+          <img
+            src="../../assets/logos/my-logo_white.png"
+            alt="Logo"
+            class="logo"
+          />
+        </div>
+        <ul class="navbar__links navbar__right">
+          <li><a href="https://github.com/Harshit-Dhanwalkar">Github</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="../../contact/index.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Scroll Indicator -->
+      <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+      </div>
+    </header>
+
+    <!-- Sphere Packing Animation -->
+    <section id="Home">
+      <canvas id="webgl-canvas"></canvas>
+      <div class="titles">
+        <h1>My BLOG</h1>
+        <!-- <h2>Dhanwalkar</h2> -->
+      </div>
+      <div class="buttons">
+        <button type="button" id="colors-btn">Random colors</button>
+      </div>
+    </section>
+
+    <!-- Blogs grid -->
+    <section id="BlogSeclect">
+      <div class="titles">
+        <!-- <h1>My Blogs</h1> -->
+        <h2>Blogs List</h2>
+        <div class="grid-container">
+          <ul class="filter-list">
+            <li class="active" data-filter="*">All</li>
+            <li data-filter=".linux">Linux</li>
+            <li data-filter=".code">Coding</li>
+            <li data-filter=".latex">Latex</li>
+            <li data-filter=".python">Python</li>
+          </ul>
+          <div class="grid-container">
+            <div class="grid">
+              <div class="grid-item linux code">
+                <a href="../Blog/23-05-2025/index.html" class="overlay-link">
+                  <div class="title">PDFDOOM</div>
+                  <div class="overlay">
+                    <h3>Play DOOM in PDF</h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>&copy; 2025 My Blog | All Rights Reserved</footer>
+    <script type="module" src="../../script.js"></script>
+  </body>
+</html>

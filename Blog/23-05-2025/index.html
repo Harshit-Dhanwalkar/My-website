@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harshit Prashant Dhanwalkar</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&amp;display=swap"
+    />
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter&display=swap" > -->
+    <link rel="stylesheet" href="../../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- Sticky Header -->
+    <header id="sticky-header" class="header__navbar">
+      <nav class="navbar">
+        <ul class="navbar__links navbar__left">
+          <li><a href="../../index.html">Home</a></li>
+        </ul>
+        <div class="navbar__logo">
+          <img
+            src="../../assets/logos/my-logo_white.png"
+            alt="Logo"
+            class="logo"
+          />
+        </div>
+        <ul class="navbar__links navbar__right">
+          <li><a href="https://github.com/Harshit-Dhanwalkar">Github</a></li>
+          <li><a href="../index.html">Blog</a></li>
+          <li><a href="../../contact/index.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Scroll Indicator -->
+      <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+      </div>
+    </header>
+
+    <!-- Sphere Packing Animation -->
+    <section id="pdfembed">
+      <canvas id="webgl-canvas"></canvas>
+      <div class="titles">
+        <h1>My Blog</h1>
+      </div>
+      <div class="buttons">
+        <button type="button" id="colors-btn">Random colors</button>
+      </div>
+
+      <article class="post">
+        <h2 class="post-title">PDF DOOM</h2>
+        <p class="post-date">Posted on May 23, 2025</p>
+        <p class="post-content">
+          Ever imagined playing <strong>DOOM</strong> inside a PDF? Check it out
+          below:
+        </p>
+
+        <iframe
+          id="pdfViewer"
+          src="../../ViewerJS/#../23-05-2025/doompdf/out/doom.pdf"
+          width="90%"
+          height="500px"
+          allowfullscreen
+          style="border: none"
+          title="DOOM PDF Viewer"
+        ></iframe>
+      </article>
+    </section>
+
+    <footer>&copy; 2025 My Blog | All Rights Reserved</footer>
+    <script type="module" src="../../script.js"></script>
+  </body>
+</html>
