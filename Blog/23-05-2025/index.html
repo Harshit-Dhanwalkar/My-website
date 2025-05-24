@@ -1,55 +1,139 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <title>DoomPDF</title>
-    <link rel="stylesheet" href="index.css" />
-    <script src="index.js" defer></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harshit Prashant Dhanwalkar</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&amp;display=swap"
+    />
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter&display=swap" > -->
+    <link rel="stylesheet" href="../../style.css" />
   </head>
   <body>
-    <div id="article">
-      <div id="header_box">
-        <img src="favicon.png" width="48px" height="48px" />
+    <header id="sticky-header" class="header__navbar">
+      <nav class="navbar">
+        <ul class="navbar__links navbar__left">
+          <li><a href="../../index.html">Home</a></li>
+        </ul>
+        <div class="navbar__logo">
+          <img
+            src="../../assets/logos/my-logo_white.png"
+            alt="Logo"
+            class="logo"
+          />
+        </div>
+        <ul class="navbar__links navbar__right">
+          <li><a href="https://github.com/Harshit-Dhanwalkar">Github</a></li>
+          <li><a href="../index.html">Blog</a></li>
+          <li><a href="../../contact/index.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Scroll Indicator -->
+      <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+      </div>
+    </header>
+
+    <!-- Sphere Packing Animation -->
+    <section id="Home">
+      <canvas id="webgl-canvas"></canvas>
+      <div class="titles">
+        <!-- <img src="favicon.png" width="48px" height="48px" /> -->
         <h1>DoomPDF</h1>
+        <!-- <h2>Blogs</h2> -->
       </div>
+      <div class="buttons">
+        <button type="button" id="colors-btn">Random colors</button>
+      </div>
+    </section>
 
-      <p>This is a Doom source port that runs inside a PDF file.</p>
-
-      <div id="controls_box">
-        <a href="doom.pdf" id="play_button">Start Game</a>
-        <p id="shareware_note" style="margin: 0px; margin-left: 8px">
-          (shareware)
+    <section id="Doompdf">
+      <div id="article" class="post">
+        <h2 class="post-title">Play Doom in PDF</h2>
+        <hr />
+        <p>
+          This is a Doom source port that runs inside a PDF file using
+          WebAssembly and PDF embedding. View the source code here:
+          <a href="https://github.com/ading2210/doompdf" target="_blank"
+            >github.com/ading2210/doompdf</a
+          >
         </p>
-        <div class="spacer"></div>
-        <input type="checkbox" id="custom_wad_checkbox" />
-        <label for="custom_wad_checkbox">Custom WAD</label>
-      </div>
-      <div id="wad_container">
-        <div>
-          <label for="iwad_file_picker">IWAD file:</label><br />
-          <input
-            type="file"
-            id="iwad_file_picker"
-            name="iwad_file_picker"
-            accept=".wad"
-          />
+
+        <div id="controls_box" style="text-align: center; margin: 30px 0">
+          <a href="doom.pdf" id="play_button">Start Game</a>
+          <p id="shareware_note">(shareware)</p>
+          <input type="checkbox" id="custom_wad_checkbox" />
+          <label for="custom_wad_checkbox">Custom WAD</label>
         </div>
-        <div class="spacer"></div>
-        <div>
-          <label for="iwad_file_picker">PWAD file:</label><br />
-          <input
-            type="file"
-            id="wad_file_picker"
-            name="wad_file_picker"
-            accept=".wad"
-          />
+
+        <hr />
+        <h2 class="post-title">How to Build It Yourself</h2>
+        <p>
+          To build this yourself, ensure you have <strong>Git</strong>,
+          <strong>Python 3</strong>, and <strong>bash</strong> installed on your
+          Linux system.
+        </p>
+
+        <h3>1. Clone the Repository</h3>
+        <pre><code>git clone https://github.com/ading2210/doompdf
+cd doompdf</code></pre>
+
+        <h3>2. Set Up Python Virtual Environment</h3>
+        <pre><code>python3 -m venv .venv
+source .venv/bin/activate
+pip3 install -r requirements.txt</code></pre>
+
+        <h3>3. Build the Project</h3>
+        <pre><code>env CFLAGS=-O3 ./build.sh</code></pre>
+        <p>
+          The <code>build.sh</code> script will automatically download
+          <strong>Emscripten 1.39.20</strong>.<br />
+          <strong>Note:</strong> This build process only works on Linux.
+        </p>
+
+        <h3>4. Serve the Output</h3>
+        <p>The output files will be in the <code>out/</code> directory.</p>
+        <pre><code>cd out
+python3 -m http.server</code></pre>
+        <p>
+          Open <code>http://localhost:8000/doom.pdf</code> in your browser to
+          play the game.
+        </p>
+
+        <h3>Upload Custom WADs</h3>
+        <div id="wad_container">
+          <div>
+            <label for="iwad_file_picker">IWAD file:</label><br />
+            <input
+              type="file"
+              id="iwad_file_picker"
+              name="iwad_file_picker"
+              accept=".wad"
+            />
+          </div>
+          <div class="spacer"></div>
+          <div>
+            <label for="wad_file_picker">PWAD file:</label><br />
+            <input
+              type="file"
+              id="wad_file_picker"
+              name="wad_file_picker"
+              accept=".wad"
+            />
+          </div>
         </div>
+
+        <p style="font-size: 12px; margin-top: 10px">
+          ⚠️ Note: The embedded Doom game works only in Chromium-based browsers
+          (Chrome, Brave, Edge, etc.).
+        </p>
       </div>
-      <br />
-      <p style="font-size: 12px; margin-top: 4px; margin-bottom: 4px">
-        Note: the PDF only works inside Chromium-based browsers.
-      </p>
-    </div>
+    </section>
+
+    <footer>&copy; 2025 My Blog | All Rights Reserved</footer>
+    <script type="module" src="../../script.js"></script>
   </body>
 </html>
-
