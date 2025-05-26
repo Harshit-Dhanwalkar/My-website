@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harshit Prashant Dhanwalkar</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap"
+    />
+    <link rel="stylesheet" href="../../style.css" />
+  </head>
+  <body>
+    <header id="sticky-header" class="header__navbar">
+      <nav class="navbar">
+        <ul class="navbar__links navbar__left">
+          <li><a href="../../index.html">Home</a></li>
+        </ul>
+        <div class="navbar__logo">
+          <img
+            src="../../assets/logos/my-logo_white.png"
+            alt="Logo"
+            class="logo"
+          />
+        </div>
+        <ul class="navbar__links navbar__right">
+          <li><a href="https://github.com/Harshit-Dhanwalkar">Github</a></li>
+          <li><a href="../index.html">Blog</a></li>
+          <li><a href="../../contact/index.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Scroll Indicator -->
+      <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+      </div>
+    </header>
+
+    <!-- Sphere Packing Animation -->
+    <section id="Home">
+      <canvas id="webgl-canvas"></canvas>
+      <div class="titles">
+        <h1>SwayWM</h1>
+      </div>
+      <div class="buttons">
+        <button type="button" id="colors-btn">Random colors</button>
+      </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section id="SwayWM">
+      <div id="article" class="post">
+        <h2 class="post-title">
+          SwayWM: A Simple and Customizable Tiling Window Manager for Wayland
+          Users
+        </h2>
+        <hr />
+
+        <p>
+          <strong>SwayWM</strong> is a lightweight tiling window manager built
+          specifically for Wayland. If you're coming from i3 and want to
+          continue using a similar workflow in a Wayland environment, Sway is
+          your best bet. It's fully compatible with most i3 configurations and
+          supports extensive customization.
+        </p>
+
+        <h3>Why Use SwayWM?</h3>
+        <ul>
+          <li>Wayland-native tiling window manager</li>
+          <li>i3-compatible configuration</li>
+          <li>Minimal, fast, and secure</li>
+          <li>Custom keybindings, workspaces, and more</li>
+        </ul>
+
+        <h3>How to Install</h3>
+        <!-- <p> -->
+        <!-- </p> -->
+
+        <pre><code># On Debian-based systems, use:</code></pre>
+        <pre><code>sudo apt install sway</code></pre>
+
+        <pre><code># For Arch-based systems, use:</code></pre>
+        <pre><code>sudo pacman -S sway</code></pre>
+
+        <h3>Basic Configuration</h3>
+        <p>
+          Sway uses the config file at <code>~/.config/sway/config</code>. You
+          can start with the default and begin customizing!
+        </p>
+
+        <h3>Recommended Tools</h3>
+        <ul>
+          <li><code>waybar</code> - status bar for Wayland</li>
+          <li>
+            <code>rofi</code> (with wofi for Wayland) - application launcher
+          </li>
+          <li><code>swaybg</code> - wallpaper tool</li>
+          <li><code>wl-clipboard</code> - clipboard utilities</li>
+        </ul>
+
+        <h3>My SwayWM Config</h3>
+        <div class="screenshot">
+          <img
+            src="assets/Swaywm-blog-post.png"
+            alt="Screenshot of SwayWM config"
+          />
+        </div>
+
+        <h3>My Experience Using SwayWM</h3>
+        <p>
+          I’ve been using <strong>SwayWM</strong> as my daily driver for over
+          two years now, especially on my university laptop. Despite being a
+          low-budget machine, Sway performs exceptionally well-everything feels
+          smooth, snappy, and lightweight.
+        </p>
+        <p>
+          What I love most is the simplicity and full control it gives me over
+          my workflow. Whether I’m writing code, taking notes, or managing
+          multiple terminals, Sway handles it all without ever slowing me down.
+        </p>
+
+        <h3>Final Thoughts</h3>
+        <p>
+          SwayWM brings modern display server support with the minimalism and
+          power of i3. If you're looking for a tiling window manager that works
+          seamlessly with Wayland and offers full control over your workflow,
+          give Sway a try!
+        </p>
+      </div>
+    </section>
+
+    <footer>&copy; 2025 My Blog | All Rights Reserved</footer>
+    <script type="module" src="../../script.js"></script>
+  </body>
+</html>
