@@ -9,7 +9,18 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap"
     />
     <link rel="stylesheet" href="../../style.css" />
+
+    <!-- code highlight -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+    />
   </head>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
   <body>
     <header id="sticky-header" class="header__navbar">
       <nav class="navbar">
@@ -73,14 +84,16 @@
         </ul>
 
         <h3>How to Install</h3>
-        <!-- <p> -->
-        <!-- </p> -->
 
-        <pre><code># On Debian-based systems, use:</code></pre>
-        <pre><code>sudo apt install sway</code></pre>
+        <pre><code class="language-bash">
+        # On Debian-based systems, use:
+        sudo apt install sway
+        </code></pre>
 
-        <pre><code># For Arch-based systems, use:</code></pre>
-        <pre><code>sudo pacman -S sway</code></pre>
+        <pre><code class="language-bash">
+        # For Arch-based systems, use:
+        sudo pacman -S sway
+        </code></pre>
 
         <h3>Basic Configuration</h3>
         <p>
@@ -131,5 +144,64 @@
 
     <footer>&copy; 2025 My Blog | All Rights Reserved</footer>
     <script type="module" src="../../script.js"></script>
+
+    <script>
+      // Fallback copy function using textarea
+      function fallbackCopyText(text) {
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "absolute";
+        textarea.style.left = "-9999px";
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+          const successful = document.execCommand("copy");
+          document.body.removeChild(textarea);
+          return successful;
+        } catch (err) {
+          console.error("Fallback: Unable to copy", err);
+          document.body.removeChild(textarea);
+          return false;
+        }
+      }
+
+      // Setup copy buttons on all code blocks
+      document.querySelectorAll("pre code").forEach((codeBlock) => {
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("code-block");
+
+        const pre = codeBlock.parentNode;
+        const copyBtn = document.createElement("button");
+        copyBtn.className = "copy-btn";
+        copyBtn.innerText = "Copy";
+
+        pre.parentNode.insertBefore(wrapper, pre);
+        wrapper.appendChild(copyBtn);
+        wrapper.appendChild(pre);
+
+        copyBtn.addEventListener("click", async () => {
+          const text = codeBlock.textContent;
+
+          try {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              await navigator.clipboard.writeText(text);
+            } else {
+              fallbackCopyText(text);
+            }
+            copyBtn.innerText = "Copied!";
+          } catch (err) {
+            console.error("Clipboard error:", err);
+            fallbackCopyText(text);
+            copyBtn.innerText = "Fallback used";
+          }
+
+          setTimeout(() => {
+            copyBtn.innerText = "Copy";
+          }, 2000);
+        });
+      });
+    </script>
   </body>
 </html>
