@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harshit Prashant Dhanwalkar</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap"
+    />
+    <link rel="stylesheet" href="../../style.css" />
+
+    <!-- code highlight -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+    />
+  </head>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+
+  <body>
+    <header id="sticky-header" class="header__navbar">
+      <nav class="navbar">
+        <ul class="navbar__links navbar__left">
+          <li><a href="../../index.html">Home</a></li>
+        </ul>
+        <div class="navbar__logo">
+          <img
+            src="../../assets/logos/my-logo_white.png"
+            alt="Logo"
+            class="logo"
+          />
+        </div>
+        <ul class="navbar__links navbar__right">
+          <li><a href="https://github.com/Harshit-Dhanwalkar">Github</a></li>
+          <li><a href="../index.html">Blog</a></li>
+          <li><a href="../../contact/index.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Scroll Indicator -->
+      <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+      </div>
+    </header>
+
+    <!-- Sphere Packing Animation -->
+    <section id="Home">
+      <canvas id="webgl-canvas"></canvas>
+      <div class="titles">
+        <h1>CodeTint</h1>
+      </div>
+      <div class="buttons">
+        <button type="button" id="colors-btn">Random colors</button>
+      </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section id="CodeTint">
+      <div id="article" class="post">
+        <h2 class="post-title">
+          Bringing Precision to Your Code: Introducing CodeTint
+        </h2>
+        <hr />
+
+        <p>
+          Welcome to the world of beautiful and precise code! I'm excited to
+          introduce <strong>CodeTint</strong>, a command-line utility built
+          entirely in C. Designed for both speed and accuracy, CodeTint
+          leverages the cutting-edge
+          <a href="https://tree-sitter.github.io/tree-sitter/" target="_blank" rel="noopener noreferrer">Tree-sitter</a>
+          parsing library to provide robust syntax highlighting.
+        </p>
+
+        <p>
+          Unlike traditional regex-based highlighting, Tree-sitter builds a
+          full syntax tree, allowing CodeTint to understand the structure of
+          your code deeply. This means more accurate highlighting for functions,
+          variables, keywords, and comments, giving you a clearer and more
+          visually appealing view of your source files.
+        </p>
+
+        <h3>Key Features</h3>
+        <ul>
+          <li>
+            <strong>Precision Highlighting:</strong> Powered by Tree-sitter,
+            CodeTint understands the syntax of your code for highly accurate
+            and reliable highlighting.
+          </li>
+          <li>
+            <strong>Multi-Language Support:</strong> Currently supports a growing
+            list of languages including
+            <strong>C, C++, Python, JavaScript, HTML, and CSS</strong>.
+          </li>
+          <li>
+            <strong>Flexible Output:</strong>
+            Output highlighted code directly to your terminal using
+            <strong>ANSI escape codes</strong>, or generate a rich, interactive
+            <strong>HTML file</strong> for web pages or browser viewing.
+          </li>
+          <li>
+            <strong>Interactive HTML Features:</strong> The HTML output
+            includes line numbers, a "Copy Code" button, and a dynamic theme
+            switcher, allowing you to change color schemes right in the browser.
+          </li>
+          <li>
+            <strong>Customizable Themes:</strong> Choose from a variety of
+            built-in color themes to suit your preference, including popular
+            ones like `dracula`, `nord`, `gruvbox`, and `one-dark`.
+          </li>
+          <li>
+            <strong>Lightweight & Fast:</strong> Written in C, CodeTint is designed
+            for minimal overhead and quick execution, even on large files.
+          </li>
+        </ul>
+
+        <h3>How it Works</h3>
+        <p>
+          CodeTint utilizes Tree-sitter to parse your source code into an
+          abstract syntax tree (AST). It then applies predefined queries (written
+          in Tree-sitter's query language, `.scm`) against this AST to identify
+          different code elements like keywords, strings, comments, and function
+          names. Based on these matches, it applies the appropriate ANSI escape
+          codes or injects HTML `<span>` tags with CSS classes, which are then
+          styled by your chosen theme.
+        </p>
+
+        <h3>Installation</h3>
+        <p>
+          To get `CodeTint` up and running, follow these steps.
+          For detailed instructions and prerequisites, refer to the project's
+          <a href="https://github.com/Harshit-Dhanwalkar/CodeTint/blob/main/README.md" target="_blank" rel="noopener noreferrer">README.md</a>.
+        </p>
+        <h4>Prerequisites</h4>
+        <ul>
+          <li>C Compiler: GCC or Clang</li>
+          <li>Git: To clone the repository and its submodules</li>
+          <li>Tree-sitter Library</li>
+          <li>Tree-sitter Language Grammars</li>
+        </ul>
+
+        <h4>Build Steps</h4>
+        <p>
+          First, clone the repository and initialize submodules:
+        </p>
+        <pre><code class="language-bash">
+git clone https://github.com/Harshit-Dhanwalkar/CodeTint.git
+cd CodeTint
+git submodule update --init --recursive
+        </code></pre>
+        <p>
+          Then, compile the application using the provided `gcc` command:
+        </p>
+        <pre><code class="language-bash">
+gcc -Wall -Wextra -g \
+    -Imodules \
+    -I./tree-sitter/lib/include \
+    -I./tree-sitter-python/src \
+    -I./tree-sitter-c/src \
+    -I./tree-sitter-cpp/src \
+    -I./tree-sitter-javascript/src \
+    -I./tree-sitter-html/src \
+    -I./tree-sitter-css/src \
+    codetint.c modules/theme.c \
+    ./tree-sitter/lib/src/lib.c \
+    ./tree-sitter-python/src/parser.c \
+    ./tree-sitter-python/src/scanner.c \
+    ./tree-sitter-c/src/parser.c \
+    ./tree-sitter-cpp/src/parser.c \
+    ./tree-sitter-cpp/src/scanner.c \
+    ./tree-sitter-javascript/src/parser.c \
+    ./tree-sitter-javascript/src/scanner.c \
+    ./tree-sitter-html/src/parser.c \
+    ./tree-sitter-html/src/scanner.c \
+    ./tree-sitter-css/src/parser.c \
+    ./tree-sitter-css/src/scanner.c \
+    -o codetint
+        </code></pre>
+
+        <h3>Usage Examples</h3>
+        <p>
+          Once compiled, you can use `CodeTint` from your terminal:
+        </p>
+
+        <h4>Basic Terminal Output:</h4>
+        <pre><code class="language-bash">
+./codetint your_source_file.c
+        </code></pre>
+
+        <h4>Specifying a Color Theme (e.g., `dracula`):</h4>
+        <pre><code class="language-bash">
+./codetint -c dracula your_source_file.py
+        </code></pre>
+
+        <h4>Generating Interactive HTML Output (with line numbers):</h4>
+        <pre><code class="language-bash">
+./codetint your_source_file.js --html -n -o highlighted_code.html
+        </code></pre>
+        <p>
+          Open the generated `highlighted_code.html` in your web browser to
+          experience the interactive features, including the theme switcher and
+          copy-to-clipboard functionality.
+        </p>
+
+        <h3>A Look Under the Hood (C Code Example)</h3>
+        <p>
+          Here's a small C code snippet, which `CodeTint` can highlight with
+          precision:
+        </p>
+        <pre><code class="language-c">
+#include &lt;stdio.h&gt; // Include standard I/O
+/**
+ * main - Entry point
+ * Return: Always 0
+ */
+int main(void) {
+    // Print a greeting
+    printf("Hello, CodeTint!\n"); // Function call and string literal
+    return 0; // Keyword return
+}
+        </code></pre>
+        <p>
+          Running `CodeTint` on this file (e.g.,
+          `./codetint -c dracula example.c --html -o example.html`)
+          will produce an HTML file where keywords, comments, strings, and
+          functions are distinctly colored according to the Dracula theme.
+        </p>
+
+        <h3>Future Vision</h3>
+        <p>
+          CodeTint is under continuous development. Future plans include:
+        </p>
+        <ul>
+          <li>Live update/incremental parsing for real-time highlighting.</li>
+          <li>Support for piping input directly from other commands.</li>
+          <li>External configuration for themes and settings.</li>
+          <li>Integration with tools to generate highlighted code block images.</li>
+          <li>Further language support (Rust, Bash, Lua).</li>
+        </ul>
+
+        <h3>Get Involved!</h3>
+        <p>
+          I welcome contributions and feedback! If you find `CodeTint` useful,
+          encounter issues, or have ideas for new features, please visit the
+          <a href="https://github.com/Harshit-Dhanwalkar/CodeTint" target="_blank" rel="noopener noreferrer">CodeTint GitHub repository</a>.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      &copy; 2025 Harshit Prashant Dhanwalkar | All Rights Reserved
+    </footer>
+
+    <script type="module" src="../../script.js"></script>
+  </body>
+</html>
