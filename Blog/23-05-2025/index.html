@@ -1,4 +1,3 @@
-<!-- blog pdfdoom -->
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,11 +6,24 @@
     <title>Harshit Prashant Dhanwalkar</title>
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap"
     />
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter&display=swap" > -->
     <link rel="stylesheet" href="../../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
   </head>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+
   <body>
     <header id="sticky-header" class="header__navbar">
       <nav class="navbar">
@@ -32,19 +44,15 @@
         </ul>
       </nav>
 
-      <!-- Scroll Indicator -->
       <div class="progress-container">
         <div class="progress-bar" id="myBar"></div>
       </div>
     </header>
 
-    <!-- Sphere Packing Animation -->
     <section id="Home">
       <canvas id="webgl-canvas"></canvas>
       <div class="titles">
-        <!-- <img src="favicon.png" width="48px" height="48px" /> -->
         <h1>DoomPDF</h1>
-        <!-- <h2>Blogs</h2> -->
       </div>
       <div class="buttons">
         <button type="button" id="colors-btn">Random colors</button>
@@ -89,7 +97,6 @@
           <label for="custom_wad_checkbox">Custom WAD</label>
         </div>
 
-        <!-- Hidden iframe container -->
         <div
           id="pdf_embed_container"
           style="display: none; text-align: center; margin-top: 20px"
@@ -111,16 +118,16 @@
         </p>
 
         <h3>1. Clone the Repository</h3>
-        <pre><code>git clone https://github.com/ading2210/doompdf
+        <pre><code class="language-bash">git clone https://github.com/ading2210/doompdf
 cd doompdf</code></pre>
 
         <h3>2. Set Up Python Virtual Environment</h3>
-        <pre><code>python3 -m venv .venv
+        <pre><code class="language-bash">python3 -m venv .venv
 source .venv/bin/activate
 pip3 install -r requirements.txt</code></pre>
 
         <h3>3. Build the Project</h3>
-        <pre><code>env CFLAGS=-O3 ./build.sh</code></pre>
+        <pre><code class="language-bash">env CFLAGS=-O3 ./build.sh</code></pre>
         <p>
           The <code>build.sh</code> script will automatically download
           <strong>Emscripten 1.39.20</strong>.<br />
@@ -129,7 +136,7 @@ pip3 install -r requirements.txt</code></pre>
 
         <h3>4. Serve the Output</h3>
         <p>The output files will be in the <code>out/</code> directory.</p>
-        <pre><code>cd out
+        <pre><code class="language-bash">cd out
 python3 -m http.server</code></pre>
         <p>
           Open <code>http://localhost:8000/doom.pdf</code> in your browser to
@@ -166,8 +173,68 @@ python3 -m http.server</code></pre>
       </div>
     </section>
 
-    <footer>
-      &copy; 2025 Harshit Prashant Dhanwalkar | All Rights Reserved
+    <!-- Sticky Social Sharing Bar -->
+    <footer class="sticky-footer">
+      <div class="social_sharing show" id="it1xm3">
+        <div class="container-block social-share-container jssocials">
+          <div class="socials-shares">
+            <!-- LinkedIn -->
+            <div class="socials-share socials-share-linkedin">
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/shareArticle?mini=true&url=https://harshit-dhanwalkar.github.io/My-website/"
+                class="socials-share-link"
+              >
+                <i class="fab fa-linkedin socials-share-logo"></i>
+              </a>
+            </div>
+
+            <!-- Email -->
+            <div class="socials-share socials-share-email">
+              <a
+                target="_self"
+                href="mailto:?subject=Check%20Out%20My%20Website!&body=Hey!%20Check%20out%20this%20website:%20https://harshit-dhanwalkar.github.io/My-website/"
+                class="socials-share-link"
+              >
+                <i class="fas fa-envelope socials-share-logo"></i>
+              </a>
+            </div>
+
+            <!-- Twitter -->
+            <div class="socials-share socials-share-twitter">
+              <a
+                target="_blank"
+                href="https://twitter.com/intent/tweet?text=Check%20this%20out!%20🔥&via=Tyler-durden0118&url=https://harshit-dhanwalkar.github.io/My-website/"
+                class="socials-share-link"
+              >
+                <i class="fab fa-twitter socials-share-logo"></i>
+              </a>
+            </div>
+
+            <!-- Discord -->
+            <div class="socials-share socials-share-discord">
+              <a
+                target="_blank"
+                href="https://discord.com/users/harshitpdhanwalkar"
+                class="socials-share-link"
+              >
+                <i class="fab fa-discord socials-share-logo"></i>
+              </a>
+            </div>
+
+            <!-- Reddit -->
+            <div class="socials-share socials-share-reddit">
+              <a
+                target="_blank"
+                href="https://www.reddit.com/user/TylerDurden0118"
+                class="socials-share-link"
+              >
+                <i class="fab fa-reddit-alien socials-share-logo"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
 
     <script>

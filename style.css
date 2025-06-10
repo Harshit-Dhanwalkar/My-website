@@ -812,11 +812,9 @@ section form {
   max-width: 500px;
   margin: 0 auto;
   padding: 20px;
-
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(15px) saturate(180%);
   -webkit-backdrop-filter: blur(15px) saturate(180%);
-
   border-radius: 15px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -896,7 +894,7 @@ section form button:hover {
   transform: scale(1.05);
 }
 
-/* Socails */
+/* Socials */
 .social_sharing {
   position: fixed;
   bottom: -100px;
@@ -913,14 +911,11 @@ section form button:hover {
     opacity 0.3s;
   opacity: 0;
   visibility: hidden;
-
-  /* Ensure Horizontal Layout */
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   gap: 10px;
-
   min-width: fit-content;
   width: auto;
   height: 20px;
@@ -929,7 +924,7 @@ section form button:hover {
 
 /* Show Social Sharing when scrolled to bottom */
 .social_sharing.show {
-  bottom: 10px;
+  bottom: 30px;
   opacity: 0.8;
   visibility: visible;
 }
@@ -1129,11 +1124,14 @@ pre code:hover {
   padding: 20px 20px;
   margin: 80px auto;
   max-width: 800px;
+  margin-bottom: 80px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
   position: relative;
   text-shadow: none;
-  height: 100%;
+  height: auto;
+  min-height: unset;
+  /* height: 100%; */
 }
 
 #article:hover {
@@ -1183,7 +1181,7 @@ pre code:hover {
 #controls_box,
 #wad_container {
   position: relative;
-  z-index: 100; /* well above the canvas */
+  z-index: 100;
 }
 
 #pdfembbed,
@@ -1243,6 +1241,8 @@ pre code:hover {
 /* Footer Styles */
 footer {
   position: relative;
-  z-index: 2;
-  position: fixed;
+  z-index: 10;
+  padding: 20px;
+  /* text-align: center; */
+  /* margin-top: 50px; */
 }
