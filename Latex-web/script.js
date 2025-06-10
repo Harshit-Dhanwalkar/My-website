@@ -1,20 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
   const latexInput = document.getElementById("latex-input");
-  const renderButton = document.getElementById("render-latex-btn");
-  const clearButton = document.getElementById("clear-latex-btn"); // For the clear button
+  const renderButton = document.getElementById("render-latex-btn"); // This button will now act as 'Re-render'
+  const clearButton = document.getElementById("clear-latex-btn");
   const latexOutput = document.getElementById("latex-output");
+
+  let debounceTimeout;
+  const debounceDelay = 500; // Adjust this delay (in milliseconds) as needed
 
   // Function to render LaTeX
   function renderLatex() {
     const inputText = latexInput.value;
-    // First, put the raw LaTeX into the output div
-    latexOutput.innerHTML = inputText;
+    latexOutput.innerHTML = inputText; // Set the raw LaTeX content first
 
-    // Then, tell MathJax to typeset the content of that specific div
-    // Use typesetPromise for asynchronous rendering
     if (window.MathJax) {
+      // Tell MathJax to typeset the content of the specific output div
       MathJax.typesetPromise([latexOutput]).catch((err) => {
-        // Log any MathJax rendering errors to the console
         console.error("MathJax rendering error:", err);
         latexOutput.innerHTML = `<p style="color: red;">Error rendering LaTeX: ${err.message}</p>`;
       });
@@ -25,28 +25,42 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Event listener for the Render button
+  // --- Live Rendering with Debounce ---
+  if (latexInput) {
+    latexInput.addEventListener("input", () => {
+      clearTimeout(debounceTimeout); // Clear any existing debounce timeout
+      debounceTimeout = setTimeout(() => {
+        renderLatex(); // Call render after the debounce delay
+      }, debounceDelay);
+    });
+  } else {
+    console.warn("LaTeX input textarea not found!");
+  }
+
+  // --- "Re-render" Button (formerly "Render") ---
   if (renderButton) {
-    renderButton.addEventListener("click", renderLatex);
+    renderButton.textContent = "Re-render LaTeX"; // Change button text to reflect its new role
+    renderButton.addEventListener("click", () => {
+      clearTimeout(debounceTimeout); // Ensure any pending live render is cancelled
+      renderLatex(); // Force an immediate re-render
+    });
   } else {
     console.warn("Render button not found!");
   }
 
-  // Event listener for the Clear button
+  // --- Clear Button ---
   if (clearButton) {
     clearButton.addEventListener("click", () => {
       latexInput.value = ""; // Clear the input textarea
       latexOutput.innerHTML =
         "<p>Your LaTeX output will be displayed here.</p>"; // Clear the output div
-      // Optionally re-typeset to clear any previous math renderings if needed,
-      // but setting innerHTML usually suffices.
+      clearTimeout(debounceTimeout); // Also clear any pending live renders
     });
   } else {
     console.warn("Clear button not found!");
   }
 
-  // Optional: Render on initial load if there's placeholder text or saved content
-  // You might want to call renderLatex() here if you have initial content to display.
-  // If you only want to render when the user clicks, you can omit this.
-  // renderLatex();
+  // if (latexInput.value.trim() !== '') {
+  //     renderLatex();
+  // }
 });
