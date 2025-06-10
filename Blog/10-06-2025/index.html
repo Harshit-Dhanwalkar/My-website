@@ -1,0 +1,230 @@
+<!-- blog photorec -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harshit Prashant Dhanwalkar</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap"
+    />
+    <link rel="stylesheet" href="../../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+    />
+  </head>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+
+  <body>
+    <header id="sticky-header" class="header__navbar">
+      <nav class="navbar">
+        <ul class="navbar__links navbar__left">
+          <li><a href="../../index.html">Home</a></li>
+        </ul>
+        <div class="navbar__logo">
+          <img
+            src="../../assets/logos/my-logo_white.png"
+            alt="Logo"
+            class="logo"
+          />
+        </div>
+        <ul class="navbar__links navbar__right">
+          <li><a href="https://github.com/Harshit-Dhanwalkar">Github</a></li>
+          <li><a href="../index.html">Blog</a></li>
+          <li><a href="../../contact/index.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+      </div>
+    </header>
+
+    <section id="Home">
+      <canvas id="webgl-canvas"></canvas>
+      <div class="titles">
+        <h1>PhotoRec File Recovery</h1>
+      </div>
+      <div class="buttons">
+        <button type="button" id="colors-btn">Random colors</button>
+      </div>
+    </section>
+
+    <section id="CodeTint">
+      <div id="article" class="post">
+        <h2 class="post-title">Lost Your Files? Recover Them with PhotoRec</h2>
+        <hr />
+
+        <p>
+          Accidentally deleted important files from your hard drive, USB, or SD
+          card?
+          <strong>PhotoRec</strong> can help bring them back from the digital
+          grave. In this post, we’ll explore how to use this powerful
+          open-source utility to recover your lost files safely and effectively.
+        </p>
+
+        <h3>What is PhotoRec?</h3>
+        <p>
+          <a
+            href="https://www.cgsecurity.org/wiki/PhotoRec"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            PhotoRec</a
+          >
+          is a companion tool to TestDisk, focused on data recovery. Unlike
+          conventional recovery tools that rely on file system metadata,
+          PhotoRec scans the raw disk space for known file signatures, making it
+          extremely effective even when the filesystem is corrupted or missing.
+        </p>
+
+        <h3>Key Features</h3>
+        <ul>
+          <li>
+            <strong>File Recovery:</strong> Supports recovery of over 480 file
+            extensions including photos, videos, documents, and archives.
+          </li>
+          <li>
+            <strong>Cross-Platform:</strong> Available for Linux, Windows, and
+            macOS.
+          </li>
+          <li>
+            <strong>Works on Damaged Partitions:</strong> Recovers data even
+            from corrupted or formatted partitions.
+          </li>
+          <li>
+            <strong>No Installation Required:</strong> Portable and runs
+            directly from the command line.
+          </li>
+        </ul>
+
+        <h3>Installation</h3>
+        <p>On most Linux distributions, install via your package manager:</p>
+        <pre><code class="language-bash">
+sudo apt install testdisk  # Debian/Ubuntu
+sudo pacman -S testdisk    # Arch-based
+brew install testdisk      # macOS with Homebrew
+        </code></pre>
+
+        <h3>Usage: Step-by-Step Guide</h3>
+
+        <h4>1. Launch PhotoRec</h4>
+        <p>Start the tool from the terminal with superuser privileges:</p>
+        <pre><code class="language-bash">
+sudo photorec
+        </code></pre>
+
+        <h4>2. Select Disk</h4>
+        <p>
+          Choose the disk that contained the deleted files. Make sure you're
+          selecting the correct one to avoid further data loss.
+        </p>
+
+        <h4>3. Choose Partition and Filesystem Type</h4>
+        <p>
+          Select the partition and specify the filesystem type. If unsure,
+          choose
+          <strong>[Other]</strong> unless it's an ext2/ext3/ext4 Linux
+          partition.
+        </p>
+
+        <h4>4. Select Options (Optional)</h4>
+        <p>
+          You can adjust settings like enabling brute-force recovery or
+          excluding known files. The default options work well for most
+          use-cases.
+        </p>
+
+        <h4>5. Choose File Types</h4>
+        <p>
+          You can narrow down recovery to specific file formats (like `.jpg`,
+          `.pdf`, `.zip`), saving time and disk space.
+        </p>
+
+        <h4>6. Select Destination</h4>
+        <p>
+          <strong>Important:</strong> Do NOT save recovered files on the same
+          drive you’re recovering from. Choose another drive or external disk to
+          avoid overwriting deleted data.
+        </p>
+
+        <h4>7. Let It Run</h4>
+        <p>
+          PhotoRec will begin scanning and recovering files. Depending on disk
+          size and speed, this may take minutes to hours.
+        </p>
+
+        <h3>Example Recovery Session</h3>
+        <pre><code class="language-bash">
+# Launch the program
+sudo photorec
+
+# Choose disk: /dev/sdb
+# Select partition: [Whole disk]
+# Filesystem: Other
+# Choose file types: only .jpg and .pdf
+# Save to: /home/user/recovered/
+        </code></pre>
+
+        <h3>Tips & Caveats</h3>
+        <ul>
+          <li>
+            <strong>Avoid Writing:</strong> Once you realize files are deleted,
+            avoid writing anything to the disk.
+          </li>
+          <li>
+            <strong>Use External Destination:</strong> Always save recovered
+            files to a different drive or USB stick.
+          </li>
+          <li>
+            <strong>Be Patient:</strong> Raw scan methods take time and may
+            recover fragmented or partial files.
+          </li>
+        </ul>
+
+        <h3>When to Use PhotoRec</h3>
+        <p>Use PhotoRec if:</p>
+        <ul>
+          <li>
+            You’ve deleted files by mistake and they’re not in the trash/recycle
+            bin.
+          </li>
+          <li>The partition is formatted or unreadable.</li>
+          <li>
+            Other file recovery methods failed due to filesystem corruption.
+          </li>
+        </ul>
+
+        <h3>Conclusion</h3>
+        <p>
+          PhotoRec is a must-have in your data recovery toolkit. It's fast,
+          reliable, and often works where other tools fail. Whether you lost
+          vacation photos, project files, or important documents, give PhotoRec
+          a try before giving up.
+        </p>
+
+        <p>
+          For more detailed information, visit the
+          <a
+            href="https://www.cgsecurity.org/wiki/PhotoRec_Step_By_Step"
+            target="_blank"
+            rel="noopener noreferrer"
+            >official guide</a
+          >.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      &copy; 2025 Harshit Prashant Dhanwalkar | All Rights Reserved
+    </footer>
+
+    <script type="module" src="../../script.js"></script>
+  </body>
+</html>
