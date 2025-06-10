@@ -1283,7 +1283,30 @@ textarea#latex-input::placeholder {
   -webkit-backdrop-filter: blur(24px);
 }
 
-/* Remaining LaTeX editor output styles */
+/* Define the glow animation */
+@keyframes glow-in-out {
+  0% {
+    box-shadow:
+      0 0 8px rgba(255, 165, 0, 0.6),
+      0 0 15px rgba(255, 165, 0, 0.4);
+  }
+  50% {
+    box-shadow:
+      0 0 15px rgba(255, 165, 0, 1),
+      0 0 25px rgba(255, 165, 0, 0.8);
+  }
+  100% {
+    box-shadow:
+      0 0 8px rgba(255, 165, 0, 0.6),
+      0 0 15px rgba(255, 165, 0, 0.4);
+  }
+}
+
+.editor-buttons button.glow-active {
+  animation: glow-in-out 2s infinite alternate ease-in-out;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
 #latex-output {
   margin-top: 3rem;
   padding: 20px;
