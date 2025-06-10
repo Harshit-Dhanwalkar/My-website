@@ -779,12 +779,10 @@ a.button-link:hover {
   width: 90vw;
   height: 90vh;
   z-index: 9999;
-
   background: rgba(255, 255, 255, 0.15);
   border: 3px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(15px) saturate(180%);
   -webkit-backdrop-filter: blur(15px) saturate(180%);
-
   border-radius: 10px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
@@ -882,6 +880,7 @@ section form button {
   justify-content: center;
   width: 100%;
   z-index: 2;
+  margin-top: 20px;
   gap: 15px;
 }
 
@@ -1229,7 +1228,7 @@ pre code:hover {
 /* margin between sections */
 #spherepacking,
 #pdfembbed {
-  margin-bottom: 40px;
+  margin-bottom: 90px;
 }
 
 /* spacing between button groups */
