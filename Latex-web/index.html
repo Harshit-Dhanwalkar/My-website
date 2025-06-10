@@ -68,25 +68,33 @@
         </p>
         <textarea
           id="latex-input"
-          placeholder="Type your LaTeX here... e.g. $\int_0^1 x^2 \, dx$ to render a simple integral.
-For equations:
-$$E=mc^2$$
-For lists:
-\begin{itemize}
-  \item Item 1
-  \item Item 2
-\end{itemize}
-"
+          placeholder="Type your LaTeX here.
+For simple math renders, enclose expressions inside $ $ $$ $$ \( \) \[ \].
+
+For full PDF output, you can type LaTeX document code.
+
+Examples:
+$\int_0^1 x^2 \, dx$ (inline math)
+$$E=mc^2$$ (display math)
+\documentclass{article}
+\usepackage{xcolor}
+\begin{document}
+Hello, \textcolor{blue}{world}!
+\end{document}"
         ></textarea>
         <div class="editor-buttons">
-          <button id="render-latex-btn">Re-Render LaTeX</button>
+          <button id="render-latex-btn">Re-render LaTeX</button>
           <button id="clear-latex-btn">Clear Editor</button>
+          <button id="compile-pdf-btn">Compile to PDF</button>
         </div>
 
-        <h3>Rendered Output:</h3>
+        <h3>LaTeX Math Render:</h3>
         <div id="latex-output">
           <p>Your LaTeX output will be displayed here.</p>
         </div>
+
+        <h3>Rendered PDF:</h3>
+        <div id="pdf-output-container"></div>
       </article>
     </section>
 
@@ -117,7 +125,7 @@ For lists:
             <div class="socials-share socials-share-twitter">
               <a
                 target="_blank"
-                href="https://twitter.com/intent/tweet?text=Check%20this%20out!%20🔥&via=Tyler-durden0118&url=https://harshit-dhanwalkar.github.io/My-website/"
+                href="https://twitter.com/intent/tweet?text=Check%20this%20out!%20%F0%9F%94%A5&via=Tyler-durden0118&url=https://harshit-dhanwalkar.github.io/My-website/"
                 class="socials-share-link"
               >
                 <i class="fab fa-twitter socials-share-logo"></i>
@@ -151,8 +159,6 @@ For lists:
     <script type="module" src="../script.js"></script>
     <script src="script.js"></script>
     <script>
-      // Example for MathJax v3 (recommended for modern LaTeX rendering)
-      // You'll need to configure MathJax in script.js or directly here
       window.MathJax = {
         tex: {
           inlineMath: [
@@ -177,5 +183,6 @@ For lists:
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
+    <script src="runlatex.js"></script>
   </body>
 </html>
