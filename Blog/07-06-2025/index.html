@@ -11,7 +11,6 @@
     />
     <link rel="stylesheet" href="../../style.css" />
 
-    <!-- code highlight -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
@@ -43,13 +42,11 @@
         </ul>
       </nav>
 
-      <!-- Scroll Indicator -->
       <div class="progress-container">
         <div class="progress-bar" id="myBar"></div>
       </div>
     </header>
 
-    <!-- Sphere Packing Animation -->
     <section id="Home">
       <canvas id="webgl-canvas"></canvas>
       <div class="titles">
@@ -60,7 +57,6 @@
       </div>
     </section>
 
-    <!-- Blog Content -->
     <section id="CodeTint">
       <div id="article" class="post">
         <h2 class="post-title">
@@ -70,15 +66,15 @@
 
         <p>
           Welcome to the world of beautiful and precise code! I'm excited to
-          introduce <strong>CodeTint</strong>, a command-line utility built
+          introduce <strong>CodeTint</strong>, a lightweight and powerful command-line utility built
           entirely in C. Designed for both speed and accuracy, CodeTint
-          leverages the cutting-edge
+          leverages the robust parsing capabilities of
           <a href="https://tree-sitter.github.io/tree-sitter/" target="_blank" rel="noopener noreferrer">Tree-sitter</a>
-          parsing library to provide robust syntax highlighting.
+          to provide highly detailed and precise syntax highlighting.
         </p>
 
         <p>
-          Unlike traditional regex-based highlighting, Tree-sitter builds a
+          Functioning much like the classic `cat` command, CodeTint reads your source files and outputs their content, but with the added benefit of beautiful syntax highlighting. Unlike traditional regex-based highlighting, Tree-sitter builds a
           full syntax tree, allowing CodeTint to understand the structure of
           your code deeply. This means more accurate highlighting for functions,
           variables, keywords, and comments, giving you a clearer and more
@@ -93,20 +89,19 @@
             and reliable highlighting.
           </li>
           <li>
-            <strong>Multi-Language Support:</strong> Currently supports a growing
-            list of languages including
-            <strong>C, C++, Python, JavaScript, HTML, and CSS</strong>.
+            <strong>Multi-Language Support:</strong> Currently offers comprehensive support for various programming languages, transforming plain text into visually appealing, color-coded output, including
+            <strong>C, C++, Python, JavaScript, HTML, CSS, Rust, and Bash</strong>.
           </li>
           <li>
             <strong>Flexible Output:</strong>
             Output highlighted code directly to your terminal using
-            <strong>ANSI escape codes</strong>, or generate a rich, interactive
-            <strong>HTML file</strong> for web pages or browser viewing.
+            <strong>ANSI escape codes</strong>, generate a rich, interactive
+            <strong>HTML file</strong> for web pages or browser viewing, or even create <strong>PNG images</strong> of your code snippets.
           </li>
           <li>
             <strong>Interactive HTML Features:</strong> The HTML output
             includes line numbers, a "Copy Code" button, and a dynamic theme
-            switcher, allowing you to change color schemes right in the browser.
+            switcher, allowing you to change color schemes right in the browser. (Note: "Fix copy to clipboard button in HTML" is a known TODO).
           </li>
           <li>
             <strong>Customizable Themes:</strong> Choose from a variety of
@@ -116,6 +111,9 @@
           <li>
             <strong>Lightweight & Fast:</strong> Written in C, CodeTint is designed
             for minimal overhead and quick execution, even on large files.
+          </li>
+          <li>
+            <strong>Image Generation:</strong> Generate PNG images of your code snippets with customizable fonts and sizes.
           </li>
         </ul>
 
@@ -140,8 +138,7 @@
         <ul>
           <li>C Compiler: GCC or Clang</li>
           <li>Git: To clone the repository and its submodules</li>
-          <li>Tree-sitter Library</li>
-          <li>Tree-sitter Language Grammars</li>
+          <li>TrueType Font (`.ttf`) files for image generation feature.</li>
         </ul>
 
         <h4>Build Steps</h4>
@@ -154,37 +151,26 @@ cd CodeTint
 git submodule update --init --recursive
         </code></pre>
         <p>
+          For the image generation feature, you need to place your desired TrueType Font (`.ttf`) files inside the `modules/Fonts/` directory. For example:
+        </p>
+        <pre><code>
+CodeTint/
+└── modules/
+    └── Fonts/
+        ├── JetBrainsMono-2.304/
+        │   └── JetBrainsMono-Regular.ttf
+        └── ... (other .ttf files)
+        </code></pre>
+        <p>
           Then, compile the application using the provided `gcc` command:
         </p>
         <pre><code class="language-bash">
-gcc -Wall -Wextra -g \
-    -Imodules \
-    -I./tree-sitter/lib/include \
-    -I./tree-sitter-python/src \
-    -I./tree-sitter-c/src \
-    -I./tree-sitter-cpp/src \
-    -I./tree-sitter-javascript/src \
-    -I./tree-sitter-html/src \
-    -I./tree-sitter-css/src \
-    codetint.c modules/theme.c \
-    ./tree-sitter/lib/src/lib.c \
-    ./tree-sitter-python/src/parser.c \
-    ./tree-sitter-python/src/scanner.c \
-    ./tree-sitter-c/src/parser.c \
-    ./tree-sitter-cpp/src/parser.c \
-    ./tree-sitter-cpp/src/scanner.c \
-    ./tree-sitter-javascript/src/parser.c \
-    ./tree-sitter-javascript/src/scanner.c \
-    ./tree-sitter-html/src/parser.c \
-    ./tree-sitter-html/src/scanner.c \
-    ./tree-sitter-css/src/parser.c \
-    ./tree-sitter-css/src/scanner.c \
-    -o codetint
+gcc -Wall -Wextra -g -Imodules -Imodules/stb -I./tree-sitter/lib/include -I./tree-sitter-python/src -I./tree-sitter-c/src -I./tree-sitter-cpp/src/ -I./tree-sitter-javascript/src -I./tree-sitter-html/src -I./tree-sitter-css/src -I./tree-sitter-rust/src -I./tree-sitter-bash/src codetint.c modules/theme.c modules/libcodeimage.c ./tree-sitter/lib/src/lib.c ./tree-sitter-python/src/parser.c ./tree-sitter-python/src/scanner.c ./tree-sitter-c/src/parser.c ./tree-sitter-cpp/src/parser.c ./tree-sitter-cpp/src/scanner.c ./tree-sitter-javascript/src/parser.c ./tree-sitter-javascript/src/scanner.c ./tree-sitter-html/src/parser.c ./tree-sitter-html/src/scanner.c ./tree-sitter-css/src/parser.c ./tree-sitter-css/src/scanner.c ./tree-sitter-rust/src/parser.c ./tree-sitter-rust/src/scanner.c ./tree-sitter-bash/src/parser.c ./tree-sitter-bash/src/scanner.c -lm -o codetint
         </code></pre>
 
         <h3>Usage Examples</h3>
         <p>
-          Once compiled, you can use `CodeTint` from your terminal:
+          Your `CodeTint` executable is now ready to use!
         </p>
 
         <h4>Basic Terminal Output:</h4>
@@ -192,12 +178,12 @@ gcc -Wall -Wextra -g \
 ./codetint your_source_file.c
         </code></pre>
 
-        <h4>Specifying a Color Theme (e.g., `dracula`):</h4>
+        <h4>Specifying a Color Theme (e.g., `nord` for a bash script):</h4>
         <pre><code class="language-bash">
-./codetint -c dracula your_source_file.py
+./codetint examples/test.sh -c nord
         </code></pre>
 
-        <h4>Generating Interactive HTML Output (with line numbers):</h4>
+        <h4>Generating Interactive HTML Output (with line numbers for a Javascript file):</h4>
         <pre><code class="language-bash">
 ./codetint your_source_file.js --html -n -o highlighted_code.html
         </code></pre>
@@ -205,6 +191,14 @@ gcc -Wall -Wextra -g \
           Open the generated `highlighted_code.html` in your web browser to
           experience the interactive features, including the theme switcher and
           copy-to-clipboard functionality.
+        </p>
+
+        <h4>Generating a PNG image with a specific font:</h4>
+        <pre><code class="language-bash">
+./codetint examples/test1.py --image-out assets/output-python.png --image-font "JetBrainsMono-Regular" --image-fs 18
+        </code></pre>
+        <p>
+          This command will read `examples/test1.py`, render its content using the `JetBrainsMono-Regular` font at 18px size, and save the syntax-highlighted output directly to `assets/output-python.png`.
         </p>
 
         <h3>A Look Under the Hood (C Code Example)</h3>
@@ -237,10 +231,13 @@ int main(void) {
         </p>
         <ul>
           <li>Live update/incremental parsing for real-time highlighting.</li>
-          <li>Support for piping input directly from other commands.</li>
-          <li>External configuration for themes and settings.</li>
-          <li>Integration with tools to generate highlighted code block images.</li>
-          <li>Further language support (Rust, Bash, Lua).</li>
+          <li>Support for piping input directly from other commands (stdin).</li>
+          <li>External theme configuration (e.g., JSON, YAML) without recompilation.</li>
+          <li>Configuration file support for default settings.</li>
+          <li>More robust error handling.</li>
+          <li>Support for different line ending styles.</li>
+          <li>Packaging and Distribution for easier installation.</li>
+          <li>Further language support (e.g., Lua).</li>
         </ul>
 
         <h3>Get Involved!</h3>
