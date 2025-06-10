@@ -35,7 +35,6 @@ body {
   cursor: url("assets/cursors/arrowhead-rounded-outline.svg"), auto;
   margin: 0;
   align-items: center;
-  /* background-color: lightgray; */
   background-image: linear-gradient(
     rgb(128, 128, 128),
     rgb(213, 215, 235),
@@ -282,17 +281,6 @@ h2 {
   transition: width 0.2s ease-in-out;
 }
 
-/* Style the footer */
-.footer {
-  background-color: #222;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
 /* Background WebGL Canvas */
 #webgl-canvas {
   position: fixed;
@@ -306,7 +294,7 @@ h2 {
 
 /* Buttons */
 .buttons {
-  position: relative;
+  position: absolute;
   bottom: 45px;
   display: flex;
   justify-content: center;
@@ -1225,6 +1213,85 @@ pre code:hover {
   margin-right: 5px;
 }
 
+/* LaTeX Web Editor Styles */
+#latex-editor-section {
+  padding: 4rem 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+#latex-editor-section h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+
+textarea#latex-input {
+  width: 100%;
+  min-height: 300px;
+  padding: 15px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+textarea#latex-input::placeholder {
+  font-size: 1rem;
+  color: #888;
+}
+
+/* Container for the editor buttons */
+.editor-buttons {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.editor-buttons button {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 8px 16px;
+  font-size: 1.1rem;
+  color: white;
+  font-weight: bold;
+  text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* Hover effect for the editor buttons */
+.editor-buttons button:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+  color: black;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* Remaining LaTeX editor output styles */
+#latex-output {
+  margin-top: 3rem;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
 /* margin between sections */
 #spherepacking,
 #pdfembbed {
@@ -1238,6 +1305,16 @@ pre code:hover {
 }
 
 /* Footer Styles */
+.footer {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
 footer {
   position: relative;
   z-index: 10;

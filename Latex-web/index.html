@@ -1,23 +1,30 @@
-<!-- contact/index.html -->
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Contact</title>
+    <title>LaTeX Web Editor - Harshit Prashant Dhanwalkar</title>
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&amp;display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap"
     />
     <link rel="stylesheet" href="../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     />
   </head>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+
   <body>
-    <!-- Sticky Header -->
     <header id="sticky-header" class="header__navbar">
       <nav class="navbar">
         <ul class="navbar__links navbar__left">
@@ -33,45 +40,59 @@
         <ul class="navbar__links navbar__right">
           <li><a href="https://github.com/Harshit-Dhanwalkar">Github</a></li>
           <li><a href="../Blog/index.html">Blog</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="../contact/index.html">Contact</a></li>
         </ul>
       </nav>
 
-      <!-- Scroll Indicator -->
       <div class="progress-container">
         <div class="progress-bar" id="myBar"></div>
       </div>
     </header>
 
-    <!-- Sphere Packing Animation -->
-    <section id="Contact">
+    <section id="Home">
       <canvas id="webgl-canvas"></canvas>
       <div class="titles">
-        <h1>Contact Me</h1>
+        <h1>LaTeX Web Editor</h1>
       </div>
       <div class="buttons">
         <button type="button" id="colors-btn">Random colors</button>
       </div>
-      <form action="https://formspree.io/f/xannzdrn" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required />
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required />
-
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-
-        <button type="submit">Send Message</button>
-      </form>
     </section>
 
-    <!-- Sticky Social Sharing Bar -->
+    <section id="latex-editor-section">
+      <article id="latex-editor-article" class="post">
+        <h2>Your LaTeX Playground</h2>
+        <p>
+          Type your LaTeX code in the editor below and see the rendered output.
+        </p>
+        <textarea
+          id="latex-input"
+          placeholder="Type your LaTeX here... e.g. $\int_0^1 x^2 \, dx$ to render a simple integral.
+For equations:
+$$E=mc^2$$
+For lists:
+\begin{itemize}
+  \item Item 1
+  \item Item 2
+\end{itemize}
+"
+        ></textarea>
+        <div class="editor-buttons">
+          <button id="render-latex-btn">Render LaTeX</button>
+          <button id="clear-latex-btn">Clear Editor</button>
+        </div>
+
+        <h3>Rendered Output:</h3>
+        <div id="latex-output">
+          <p>Your LaTeX output will be displayed here.</p>
+        </div>
+      </article>
+    </section>
+
     <footer class="sticky-footer">
       <div class="social_sharing show" id="it1xm3">
         <div class="container-block social-share-container jssocials">
           <div class="socials-shares">
-            <!-- LinkedIn -->
             <div class="socials-share socials-share-linkedin">
               <a
                 target="_blank"
@@ -82,7 +103,6 @@
               </a>
             </div>
 
-            <!-- Email -->
             <div class="socials-share socials-share-email">
               <a
                 target="_self"
@@ -93,7 +113,6 @@
               </a>
             </div>
 
-            <!-- Twitter -->
             <div class="socials-share socials-share-twitter">
               <a
                 target="_blank"
@@ -104,7 +123,6 @@
               </a>
             </div>
 
-            <!-- Discord -->
             <div class="socials-share socials-share-discord">
               <a
                 target="_blank"
@@ -115,7 +133,6 @@
               </a>
             </div>
 
-            <!-- Reddit -->
             <div class="socials-share socials-share-reddit">
               <a
                 target="_blank"
@@ -129,6 +146,35 @@
         </div>
       </div>
     </footer>
+
     <script type="module" src="../script.js"></script>
+    <script src="script.js"></script>
+    <script>
+      // Example for MathJax v3 (recommended for modern LaTeX rendering)
+      // You'll need to configure MathJax in script.js or directly here
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ["$", "$"],
+            ["\\(", "\\)"],
+          ],
+          displayMath: [
+            ["$$", "$$"],
+            ["\\[", "\\]"],
+          ],
+          processEscapes: true,
+          tags: "ams", // For equation numbering
+        },
+        svg: {
+          fontCache: "global",
+        },
+      };
+    </script>
+    <script
+      type="text/javascript"
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
   </body>
 </html>
