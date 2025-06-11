@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Harshit Prashant Dhanwalkar</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap"
+    />
+    <link rel="stylesheet" href="../../style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+
+  <body>
+    <header id="sticky-header" class="header__navbar">
+      <nav class="navbar">
+        <ul class="navbar__links navbar__left">
+          <li><a href="../../index.html">Home</a></li>
+        </ul>
+        <div class="navbar__logo">
+          <img
+            src="../../assets/logos/my-logo_white.png"
+            alt="Logo"
+            class="logo"
+          />
+        </div>
+        <ul class="navbar__links navbar__right">
+          <li><a href="https://github.com/Harshit-Dhanwalkar">Github</a></li>
+          <li><a href="../index.html">Blog</a></li>
+          <li><a href="../../contact/index.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+      </div>
+    </header>
+
+    <section id="Home">
+      <canvas id="webgl-canvas"></canvas>
+      <div class="titles">
+        <h1>PDF Space Invaders</h1>
+      </div>
+    </section>
+
+    <section id="SpaceInvadersPDF">
+      <div id="article" class="post">
+        <h2 class="post-title">Play Space Invaders in a PDF File!</h2>
+        <hr />
+        <p>
+          Ever thought of playing a classic arcade game directly within a PDF
+          document? Inspired by innovative projects like DoomPDF, I decided to
+          take on the challenge of creating a fully playable **Space Invaders**
+          clone, powered entirely by
+          <strong>PDF form fields</strong> and
+          <strong>JavaScript</strong> embedded inside the PDF! <br /><br />
+          This project demonstrates the surprising capabilities of the PDF
+          format beyond static documents, turning it into an interactive game
+          canvas.
+        </p>
+
+        <div id="controls_box" style="text-align: center; margin: 30px 0">
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 10px;
+              flex-wrap: wrap;
+            "
+          >
+            <button id="embed_button">Start Game</button>
+
+            <a
+              href="pdf-spaceinvader/movable_square.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="button-link"
+              >Play in New Tab</a
+            >
+          </div>
+
+          <p id="compatibility_note" style="margin-top: 10px">
+            (Works best in modern PDF viewers like Adobe Acrobat Reader or
+            browser's built-in PDF viewer)
+          </p>
+        </div>
+
+        <div
+          id="pdf_embed_container"
+          style="display: none; text-align: center; margin-top: 20px"
+        >
+          <iframe
+            src="pdf-spaceinvader/movable_square.pdf"
+            width="100%"
+            height="800px"
+            style="border: 1px solid #ccc; border-radius: 8px"
+          ></iframe>
+        </div>
+
+        <hr />
+        <h2 class="post-title">How to Build It Yourself</h2>
+        <p>
+          You can generate this interactive PDF game yourself! The project is
+          built using
+          <strong>Python</strong> to programmatically create the PDF structure
+          and JavaScript.
+          <br />
+          <strong>Prerequisites:</strong> Ensure you have
+          <strong>Python 3</strong> installed on your system.
+        </p>
+
+        <h3>1. Clone the Repository</h3>
+        <pre><code class="language-bash">git clone https://github.com/Harshit-Dhanwalkar/pdf-spaceinvader
+cd pdf-spaceinvader</code></pre>
+
+        <h3>2. Generate the PDF Game</h3>
+        <p>Run the Python script to generate the PDF file.</p>
+        <pre><code class="language-bash">python3 generate.py</code></pre>
+        <p>
+          This will create a file named <code>movable_square.pdf</code> in the
+          current directory.
+        </p>
+
+        <h3>3. Open the PDF</h3>
+        <p>
+          Open the generated <code>movable_square.pdf</code> in your preferred
+          PDF viewer. For the best interactive experience, use a modern PDF
+          viewer or open it directly in your browser (e.g., Chrome, Edge,
+          Firefox).
+        </p>
+
+        <p style="font-size: 12px; margin-top: 10px">
+          ⚠️ Note: While the game uses standard PDF features, performance and
+          full interactivity may vary across different PDF viewers. Adobe
+          Acrobat Reader and modern browser PDF viewers offer the best
+          experience.
+        </p>
+      </div>
+    </section>
+
+    <footer class="sticky-footer">
+      <div class="social_sharing show" id="it1xm3">
+        <div class="container-block social-share-container jssocials">
+          <div class="socials-shares">
+            <div class="socials-share socials-share-linkedin">
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/shareArticle?mini=true&url=https://harshit-dhanwalkar.github.io/My-website/Blog/11-06-2025/pdf-space-invader/"
+                class="socials-share-link"
+              >
+                <i class="fab fa-linkedin socials-share-logo"></i>
+              </a>
+            </div>
+
+            <div class="socials-share socials-share-email">
+              <a
+                target="_self"
+                href="mailto:?subject=Check%20Out%20My%20PDF%20Space%20Invaders%20Game!&body=Hey!%20Check%20out%20this%20awesome%20Space%20Invaders%20game%20running%20in%20a%20PDF:%20https://harshit-dhanwalkar.github.io/My-website/Blog/11-06-2025/pdf-space-invader/"
+                class="socials-share-link"
+              >
+                <i class="fas fa-envelope socials-share-logo"></i>
+              </a>
+            </div>
+
+            <div class="socials-share socials-share-twitter">
+              <a
+                target="_blank"
+                href="https://twitter.com/intent/tweet?text=Just%20played%20Space%20Invaders%20in%20a%20PDF!%20🤯%20Check%20it%20out:&via=Tyler-durden0118&url=https://harshit-dhanwalkar.github.io/My-website/Blog/11-06-2025/pdf-space-invader/"
+                class="socials-share-link"
+              >
+                <i class="fab fa-twitter socials-share-logo"></i>
+              </a>
+            </div>
+
+            <div class="socials-share socials-share-discord">
+              <a
+                target="_blank"
+                href="https://discord.com/users/harshitpdhanwalkar"
+                class="socials-share-link"
+              >
+                <i class="fab fa-discord socials-share-logo"></i>
+              </a>
+            </div>
+
+            <div class="socials-share socials-share-reddit">
+              <a
+                target="_blank"
+                href="https://www.reddit.com/submit?url=https://harshit-dhanwalkar.github.io/My-website/Blog/11-06-2025/pdf-space-invader/&title=Play%20Space%20Invaders%20in%20a%20PDF!"
+                class="socials-share-link"
+              >
+                <i class="fab fa-reddit-alien socials-share-logo"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const embedButton = document.getElementById("embed_button");
+      const embedContainer = document.getElementById("pdf_embed_container");
+
+      embedButton.addEventListener("click", function () {
+        const isVisible = embedContainer.style.display === "block";
+
+        if (isVisible) {
+          embedContainer.style.display = "none";
+          embedButton.textContent = "Start Game";
+        } else {
+          embedContainer.style.display = "block";
+          embedButton.textContent = "End Game";
+          window.scrollTo({
+            top: embedContainer.offsetTop - 100,
+            behavior: "smooth",
+          });
+        }
+      });
+    </script>
+    <script type="module" src="../../script.js"></script>
+  </body>
+</html>
