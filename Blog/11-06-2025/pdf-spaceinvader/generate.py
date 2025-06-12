@@ -93,7 +93,13 @@ var bullets = [];
 
 // Create and shoot a bullet
 function fire_bullet() {
-    bullets.push({ x: player_x, y: player_y - 1 });
+    bullets.push({ x: player_x, y: player_y - 1, color: BULLET_COLOR });
+}
+
+// Create and spawn a new enemy object
+function spawn_enemy() {
+    var random_x = Math.floor(Math.random() * ###GRID_WIDTH###); // Random X position
+    enemies.push({ x: random_x, y: 0 }); // Start at the top row
 }
 
 // Update bullets and redraw them
@@ -111,7 +117,28 @@ function update_bullets() {
 // Draw bullets
 function draw_bullets() {
     for (var i = 0; i < bullets.length; ++i) {
-        set_pixel(bullets[i].x, bullets[i].y, true, [0, 0, 1]);
+        set_pixel(bullets[i].x, bullets[i].y, true, bullets[i].color);
+    }
+}
+
+// Check for collisions between bullets and enemies
+function check_collisions() {
+    // Iterate through all active bullets
+    for (var i = bullets.length - 1; i >= 0; i--) {
+        var bullet = bullets[i];
+
+        // Iterate through all active enemies
+        for (var j = enemies.length - 1; j >= 0; j--) {
+            var enemy = enemies[j];
+
+            // Check if bullet and enemy occupy the same grid coordinates
+            if (bullet.x === enemy.x && bullet.y === enemy.y) {
+                bullets.splice(i, 1); // Remove the bullet
+                enemies.splice(j, 1); // Remove the enemy
+
+                break;
+            }
+        }
     }
 }
 
@@ -119,9 +146,13 @@ function draw_bullets() {
 var player_x; // X position of the square
 var player_y; // Y position of the square
 var pixel_fields = []; // Array to hold references to PDF form fields (pixels)
-var player_color = [0, 0, 0]; 
-
-var TICK_INTERVAL = 50; // How often the game refreshes (milliseconds)
+var player_color = [0.0, 0.7, 0.0];
+var enemies = []; // Array to hold falling enemy objects
+var ENEMY_COLOR = [1.0, 0.0, 0.0];
+var BULLET_COLOR = [1.0, 0.6, 0.0];
+var ENEMY_SPAWN_RATE = 3;
+var spawn_counter = 0;
+var TICK_INTERVAL = 50; // game refreshes (milliseconds)
 var interval = 0; // Interval ID for clearing later
 
 // --- Game Functions ---
@@ -147,7 +178,7 @@ function game_init() {
 
     // Set initial position of the square (center of the grid)
     player_x = Math.floor(###GRID_WIDTH### / 2);
-    player_y = 2 // Math.floor(###GRID_HEIGHT### / 2);
+    player_y = Math.floor(###GRID_HEIGHT### - 4);
 
     // Start the game loop (calls game_tick repeatedly)
     interval = setInterval(game_tick, TICK_INTERVAL);
@@ -214,7 +245,7 @@ function move_player(dx, dy) {
 }
 
 // Sets the visibility of a single "pixel" (form field)
-function set_pixel(x, y, state, color = player_color) {
+function set_pixel(x, y, state, color_to_apply) {
     // Boundary check for safety, though move_player should handle it
     if (x < 0 || y < 0 || x >= ###GRID_WIDTH### || y >= ###GRID_HEIGHT###) {
         return;
@@ -225,11 +256,39 @@ function set_pixel(x, y, state, color = player_color) {
     pixel_field.hidden = !state;
     // Set field background color if state is true
     if (state) {
-        pixel_field.fillColor = color;
+        pixel_field.fillColor = color_to_apply;
     }
 }
 
-// Draws the current state of the game (only the player square)
+// Draw enemies
+function draw_enemies() {
+    for (var i = 0; i < enemies.length; ++i) {
+        set_pixel(enemies[i].x, enemies[i].y, true, ENEMY_COLOR);
+    }
+}
+
+// Update enemies and remove them if off-screen
+function update_enemies() {
+    // Move existing enemies down
+    for (var i = 0; i < enemies.length; ++i) {
+        enemies[i].y += 1; // Move down by one pixel
+    }
+
+    // Remove enemies off screen
+    enemies = enemies.filter(function (e) {
+        return e.y >= 0; // Keep enemies that are on or above the bottom row
+    });
+
+    // Spawn new enemies periodically
+    spawn_counter++;
+    if (spawn_counter >= ENEMY_SPAWN_RATE) {
+        spawn_enemy();
+        spawn_counter = 0; // Reset counter
+    }
+}
+
+
+// Draws the current state of the game (player, bullets, and enemies)
 function draw() {
     // First, clear the entire grid by hiding all pixels
     for (var x = 0; x < ###GRID_WIDTH###; ++x) {
@@ -243,11 +302,16 @@ function draw() {
 
     // Draw bullets
     draw_bullets();
+
+    // Draw enemies
+    draw_enemies();
 }
 
 // The main game loop function, called repeatedly by setInterval
 function game_tick() {
     update_bullets();
+    update_enemies();
+    check_collisions();
     draw();
 }
 
@@ -285,7 +349,7 @@ trailer
 %%EOF
 """
 
-# --- PDF Object Templates (Keep as is) ---
+# --- PDF Object Templates ---
 PLAYING_FIELD_OBJ = """
 ###IDX### obj
 <<
@@ -299,7 +363,7 @@ PLAYING_FIELD_OBJ = """
       0 0 0
     ]
   >>
-  /Border [ 0 0 1 ]
+  /Border [ 2 2 1 ]  # Border width of 1 points, with 2-unit rounded corners
   /P 16 0 R
   /Rect [
     ###RECT###
@@ -321,10 +385,10 @@ PIXEL_OBJ = """
       ###COLOR###
     ]
     /BC [
-      0.5 0.5 0.5
+      0.6 0.6 0.6
     ]
   >>
-  /Border [ 0 0 1 ]
+  /Border [ 0 0 0.5 ]
   /P 16 0 R
   /Rect [
     ###RECT###
@@ -353,7 +417,7 @@ BUTTON_AP_STREAM = """
 >>
 stream
 q
-0.75 g
+###BUTTON_COLOR### rg
 0 0 ###WIDTH### ###HEIGHT### re
 f
 Q
@@ -387,7 +451,7 @@ BUTTON_OBJ = """
   /Ff 65536
   /MK <<
     /BG [
-      0.75
+        0.75 0.75 0.75
     ]
     /CA (###LABEL###)
   >>
@@ -411,9 +475,12 @@ TEXT_OBJ = """
             /S /JavaScript
         >>
     >>
+    /DA (/Helvetica ###FONT_SIZE### Tf 0 g)
     /F 4
     /FT /Tx
     /MK <<
+        /BC [ 0 0 0 ]
+        /BG [ ###BG_COLOR### ]
     >>
     /MaxLen 0
     /P 16 0 R
@@ -469,7 +536,7 @@ def add_field(field):
     obj_idx_ctr += 1
 
 
-def add_button(label, name, x, y, width, height, js):
+def add_button(label, name, x, y, width, height, js, button_color_rgb="0.75 0.75 0.75"):
     """Adds a button field with associated JavaScript action."""
     global obj_idx_ctr
     script = STREAM_OBJ  # Template for the JavaScript action stream
@@ -482,6 +549,9 @@ def add_button(label, name, x, y, width, height, js):
     ap_stream = ap_stream.replace("###TEXT###", label)
     ap_stream = ap_stream.replace("###WIDTH###", f"{width}")
     ap_stream = ap_stream.replace("###HEIGHT###", f"{height}")
+    ap_stream = ap_stream.replace(
+        "###BUTTON_COLOR###", button_color_rgb
+    )  # Set the color in AP stream
     add_field(ap_stream)
 
     button = BUTTON_OBJ  # Template for the button widget object
@@ -498,41 +568,41 @@ def add_button(label, name, x, y, width, height, js):
     add_field(button)
 
 
-def add_text(label, name, x, y, width, height, js):
-    """Adds a text input field with associated JavaScript action (for keyboard input)."""
+def add_text(
+    label,
+    name,
+    x,
+    y,
+    width,
+    height,
+    js="",
+    read_only=False,
+    bg_color="1 1 1",
+    font_size=12,
+):
+    """Adds a text input field with associated JavaScript action (for keyboard input) or static text."""
     global obj_idx_ctr
-    script = STREAM_OBJ  # Template for the JavaScript action stream
-    script = script.replace("###IDX###", f"{obj_idx_ctr} 0")
-    script = script.replace("###CONTENT###", js)
-    add_field(script)
+    script_idx = "null"  # Default for no JS
+    if js:
+        script = STREAM_OBJ  # Template for the JavaScript action stream
+        script = script.replace("###IDX###", f"{obj_idx_ctr} 0")
+        script = script.replace("###CONTENT###", js)
+        add_field(script)
+        script_idx = f"{obj_idx_ctr-1} 0"  # Links to JS stream
 
     text = TEXT_OBJ  # Template for the text widget object
     text = text.replace("###IDX###", f"{obj_idx_ctr} 0")
-    text = text.replace("###SCRIPT_IDX###", f"{obj_idx_ctr-1} 0")  # Links to JS stream
-    text = text.replace("###LABEL###", label)
+    text = text.replace("###SCRIPT_IDX###", script_idx)
+    text = text.replace("###LABEL###", label.replace("\n", "\\n"))  # Handle newlines
     text = text.replace("###NAME###", name)
     text = text.replace("###RECT###", f"{x} {y} {x + width} {y + height}")
+    text = text.replace("###BG_COLOR###", bg_color)
+    text = text.replace("###FONT_SIZE###", str(font_size))
+
+    if read_only:
+        text = text.replace("<<", "<<\n    /Ff 1")
+
     add_field(text)
-
-
-# def add_text(label, name, x, y, width, height, js=""): # Made js optional for static text
-#     """Adds a text input field with associated JavaScript action (for keyboard input) or static text."""
-#     global obj_idx_ctr
-#     script_idx = "null" # Default for no JS
-#     if js:
-#         script = STREAM_OBJ # Template for the JavaScript action stream
-#         script = script.replace("###IDX###", f"{obj_idx_ctr} 0")
-#         script = script.replace("###CONTENT###", js)
-#         add_field(script)
-#         script_idx = f"{obj_idx_ctr-1} 0" # Links to JS stream
-#
-#     text = TEXT_OBJ # Template for the text widget object
-#     text = text.replace("###IDX###", f"{obj_idx_ctr} 0")
-#     text = text.replace("###SCRIPT_IDX###", script_idx)
-#     text = text.replace("###LABEL###", label)
-#     text = text.replace("###NAME###", name)
-#     text = text.replace("###RECT###", f"{x} {y} {x + width} {y + height}")
-#     add_field(text)
 
 
 # --- Generate Grid Pixels ---
@@ -567,93 +637,6 @@ BUTTON_WIDTH = 50
 BUTTON_HEIGHT = 45
 BUTTON_SPACING = 4
 
-# # Define the Y-coordinate for the bottom row of buttons (LEFT, DOWN, RIGHT)
-# Y_BUTTON_BOTTOM_ROW = GRID_OFF_Y - 110
-#
-# # X-coordinates for the bottom row (relative to GRID_OFF_X)
-# X_LEFT_BUTTON = 260
-# X_DOWN_BUTTON = X_LEFT_BUTTON + BUTTON_WIDTH + BUTTON_SPACING
-# X_RIGHT_BUTTON = X_DOWN_BUTTON + BUTTON_WIDTH + BUTTON_SPACING
-#
-# # UP button's Y-coordinate (above the DOWN button)
-# Y_UP_BUTTON = Y_BUTTON_BOTTOM_ROW + BUTTON_HEIGHT + BUTTON_SPACING
-#
-# add_button(
-#     "UP",
-#     "B_up",
-#     GRID_OFF_X + X_DOWN_BUTTON,
-#     Y_UP_BUTTON,
-#     BUTTON_WIDTH,
-#     BUTTON_HEIGHT,
-#     "move_player(0, -1);",
-# )
-#
-# add_button(
-#     "LEFT",
-#     "B_left",
-#     GRID_OFF_X + X_LEFT_BUTTON,
-#     Y_BUTTON_BOTTOM_ROW,
-#     BUTTON_WIDTH,
-#     BUTTON_HEIGHT,
-#     "move_player(-1, 0);",
-# )
-#
-# add_button(
-#     "DOWN",
-#     "B_down",
-#     GRID_OFF_X + X_DOWN_BUTTON,
-#     Y_BUTTON_BOTTOM_ROW,
-#     BUTTON_WIDTH,
-#     BUTTON_HEIGHT,
-#     "move_player(0, 1);",
-# )
-#
-# add_button(
-#     "RIGHT",
-#     "B_right",
-#     GRID_OFF_X + X_RIGHT_BUTTON,
-#     Y_BUTTON_BOTTOM_ROW,
-#     BUTTON_WIDTH,
-#     BUTTON_HEIGHT,
-#     "move_player(1, 0);",
-# )
-#
-# add_button(
-#     "FIRE",
-#     "B_fire",
-#     GRID_OFF_X + X_RIGHT_BUTTON + BUTTON_WIDTH + BUTTON_SPACING,
-#     Y_BUTTON_BOTTOM_ROW,
-#     BUTTON_WIDTH,
-#     BUTTON_HEIGHT,
-#     "fire_bullet();",
-# )
-#
-# # Start Game button (its position can remain relatively central to the grid)
-# add_button(
-#     "Start Square!",
-#     "B_start",
-#     GRID_OFF_X + (GRID_WIDTH * PX_SIZE) / 2 - 50,
-#     GRID_OFF_Y + (GRID_HEIGHT * PX_SIZE) / 2 - 50,
-#     100,
-#     100,
-#     "game_init();",
-# )
-#
-# # Text input for keyboard controls
-# # Position it below the entire button block
-# TEXT_INPUT_Y = (
-#     Y_BUTTON_BOTTOM_ROW - 20 - 50
-# )  # 20px padding below buttons, then 50px for text field height
-# add_text(
-#     "Type WASD/Arrows here to move",
-#     "T_input",
-#     GRID_OFF_X + 0,  # Align with left-most button
-#     TEXT_INPUT_Y,
-#     GRID_WIDTH * PX_SIZE,
-#     50,
-#     "handle_input(event);",
-# )
-
 # Calculate positions for the control block
 # We'll place the controls centered below the grid
 controls_block_width = (BUTTON_WIDTH * 3) + (BUTTON_SPACING * 2)  # WASD block
@@ -678,6 +661,7 @@ add_button(
     BUTTON_WIDTH,
     BUTTON_HEIGHT,
     "move_player(0, -1);",
+    "0.75 0.75 0.75",
 )
 
 add_button(
@@ -688,6 +672,7 @@ add_button(
     BUTTON_WIDTH,
     BUTTON_HEIGHT,
     "move_player(-1, 0);",
+    "0.75 0.75 0.75",
 )
 
 add_button(
@@ -698,6 +683,7 @@ add_button(
     BUTTON_WIDTH,
     BUTTON_HEIGHT,
     "move_player(0, 1);",
+    "0.75 0.75 0.75",
 )
 
 add_button(
@@ -708,6 +694,7 @@ add_button(
     BUTTON_WIDTH,
     BUTTON_HEIGHT,
     "move_player(1, 0);",
+    "0.75 0.75 0.75",
 )
 
 # Fire Button - placed to the right of the movement buttons
@@ -722,6 +709,7 @@ add_button(
     FIRE_BUTTON_WIDTH,
     BUTTON_HEIGHT,
     "fire_bullet();",
+    "1.0 0.4 0.2",
 )
 
 # Start Game button (its position can remain relatively central to the grid)
@@ -739,19 +727,51 @@ add_button(
 # Text input for keyboard controls
 # Position it aligned with the control block, slightly above the key map text
 TEXT_INPUT_FIELD_HEIGHT = 25
-TEXT_INPUT_Y = BUTTON_BOTTOM_ROW_Y - 30 - TEXT_INPUT_FIELD_HEIGHT  # 30px padding
+TEXT_INPUT_Y = BUTTON_BOTTOM_ROW_Y - 30 - TEXT_INPUT_FIELD_HEIGHT
 add_text(
-    "",  # Keep label empty as instructions are separate
+    "type wasd to move",  # Keep label empty as instructions are separate
     "T_input",
     controls_block_start_x,
     TEXT_INPUT_Y,
-    controls_block_width
-    + FIRE_BUTTON_WIDTH
-    + BUTTON_SPACING * 2,  # Span across all buttons
+    controls_block_width + FIRE_BUTTON_WIDTH + BUTTON_SPACING * 2,
     TEXT_INPUT_FIELD_HEIGHT,
     "handle_input(event);",
+    bg_color="0.8 0.9 1.0",
 )
 
+# --- Title ---
+TITLE_HEIGHT = 20
+TITLE_WIDTH = GRID_DRAW_WIDTH
+TITLE_X = GRID_OFF_X
+TITLE_Y = GRID_OFF_Y + GRID_DRAW_HEIGHT + 20
+
+add_text(
+    "SPACE INVADERS",
+    "T_title_main",
+    TITLE_X,
+    TITLE_Y,
+    TITLE_WIDTH,
+    TITLE_HEIGHT,
+    "",
+    read_only=True,
+    bg_color="0.7 0.7 1.0",
+    font_size=14,
+)
+
+# positioned below the title
+GAP = 15
+add_text(
+    "GitHub: https://github.com/Harshit-Dhanwalkar/pdf-spaceinvader",
+    "T_title_github",
+    TITLE_X,
+    TITLE_Y - GAP - 2,  # Position below title with 2px gap
+    TITLE_WIDTH,
+    GAP,
+    "",
+    read_only=True,
+    bg_color="0.7 0.7 1.0",
+    font_size=8,
+)
 
 # --- Final PDF Assembly ---
 # Replace placeholders in the main PDF template
